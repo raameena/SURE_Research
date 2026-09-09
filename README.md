@@ -1,144 +1,300 @@
-# CARLA Autonomous Driving Safety Research
+# Can We Trust AI Behind the Wheel?
 
-## Project Overview
+## Autonomous Driving Safety Research Using CARLA
 
-This repository contains research software for constructing controlled driving scenarios in the CARLA simulator and observing how an autonomous-driving system responds to traffic signals, road users, and obstacles. The model-driven scenarios integrate a PCLA TransFuser++ checkpoint through repository-specific adapters; the scripted scenarios provide explicit rule-based control paths for comparison and scenario development.
+**Raameen Ahmed · Dr. Jian Hu · Ming Gao**  
+**Sponsored by Ford Motor Company**
 
-The broader research concerns potentially unsafe model decisions and the relationship between model perception, selected driving actions, available reaction distance, and collision events. This is an ongoing project. The included data records prior runs, but this repository does not present those records as validated research findings.
+This repository contains the source code developed for a research project investigating how autonomous-driving models behave in controlled, safety-critical driving scenarios.
 
-## Research Motivation
+Using the **CARLA simulator**, the project creates repeatable driving situations, runs an autonomous-driving model through them, and records simulation, perception, vehicle-behavior, and model-decision data for later analysis.
 
-Controlled simulation makes it possible to vary a hazard or traffic condition while keeping much of the surrounding environment fixed. In this codebase, scenarios place known actors, control traffic-light phases, advance CARLA at defined intervals where required, and record both simulator ground truth and model-derived information. These mechanisms support repeatable investigation without assuming that a recorded run generalizes beyond its documented configuration.
+---
 
-## Research Objectives
+## Background & Motivation
 
-The implementation supports the following objectives:
+Machine-learning errors in autonomous vehicles can have serious safety consequences. Even small perception or decision errors may contribute to:
 
-- construct repeatable intersection and straight-road CARLA scenarios;
-- introduce controlled traffic-light phases, crossing actors, cut-in vehicles, and stationary road obstacles;
-- compare scripted vehicle behavior with model-driven behavior;
-- record sensor data, model predictions, applied controls, ground-truth distances, and collision events;
-- evaluate whether model perception and selected actions agree with scenario-defined expectations; and
-- organize run-level and inference-level data for later comparison.
+- collisions;
+- unsafe lane changes;
+- inappropriate speed changes; or
+- delayed responses to hazards.
+
+Simulation provides a controlled environment where these situations can be recreated and modified systematically without relying entirely on real-world testing.
+
+Using CARLA, this project can:
+
+- test autonomous-driving models in controlled simulated environments;
+- create repeatable safety-critical situations;
+- observe how models respond to specific conditions and stimuli;
+- collect simulation, perception, and vehicle-behavior data; and
+- analyze model behavior across different scenarios.
+
+These analyses can help identify situations in which a model behaves unexpectedly or unsafely and support future work on improving autonomous-driving model behavior and error detection.
+
+---
+
+## Research Question
+
+> **How do autonomous-driving models behave when they encounter unfamiliar or safety-critical situations in simulation, and how can the resulting data help identify unsafe model behavior?**
+
+---
+
+## Methodology & Experimental Design
+
+The research follows four primary stages:
+
+**Build Scenarios → Run Model → Record Data → Analyze Behavior**
+
+### 1. Build Controlled Scenarios
+
+Controlled driving scenarios are developed in CARLA around specific traffic conditions and potential hazards.
+
+Current scenario types include:
+
+- traffic-light controlled intersections;
+- pedestrian and bicyclist crossings;
+- vehicle conflicts at intersections;
+- vehicle interception and cut-in situations; and
+- stationary objects in the roadway.
+
+### 2. Run the Autonomous-Driving Model
+
+The autonomous-driving model is integrated into selected scenarios and used to control the ego vehicle.
+
+Scripted-control scenarios are also maintained to develop and test scenario behavior independently of the autonomous-driving model.
+
+### 3. Record Simulation Data
+
+During experimental runs, the framework can record information such as:
+
+- ego-vehicle speed and acceleration;
+- model decisions and vehicle controls;
+- object and hazard distances;
+- model perception information;
+- RGB camera data;
+- LiDAR data;
+- GPS/GNSS data; and
+- collision events.
+
+### 4. Analyze Model Behavior
+
+The collected data can be used to investigate:
+
+- when the model detects or responds to a hazard;
+- what driving action the model selects;
+- how the vehicle behaves following that decision;
+- how much reaction distance is available; and
+- whether unexpected or unsafe behavior occurs.
+
+---
 
 ## My Contributions
 
-The research-developed work represented in this deliverable includes:
+My work on this research focuses on developing the **CARLA simulation and experimental framework** used to test and analyze autonomous-driving behavior.
 
-- modular CARLA connection, spawning, actor-cleanup, sensor-recording, and run-folder utilities;
-- reusable control primitives and traffic-light/hazard monitoring logic;
-- scripted intersection scenarios for stop/go behavior and interactions with pedestrians, bicyclists, and another vehicle;
-- model-evaluation scenarios for traffic lights, intersection conflicts, cut-in timing, and stationary objects in the road;
-- adapters that load PCLA configuration, prepare synchronized camera/LiDAR input, send inference requests, translate model outputs into CARLA controls, and provide route inputs;
-- scenario-specific perception/action expectations and timing checks; and
-- structured output support for per-inference records, completed-run summaries, sensor files, metadata, and data dictionaries.
+Key contributions include:
 
-These contributions are integration and experimental-harness code. CARLA, PCLA, TransFuser++, PyTorch, and the other imported third-party libraries are external projects and are not presented as original contributions here. The copied source does not include the PCLA implementation or its checkpoint.
+- developing controlled CARLA driving scenarios for traffic signals, road users, vehicles, and roadway obstacles;
+- creating reusable vehicle-control, traffic-light, hazard, actor, and sensor components;
+- developing both scripted-control and model-driven scenarios;
+- integrating an autonomous-driving model into the CARLA scenario framework;
+- building infrastructure to record sensor, perception, vehicle-behavior, model-decision, and collision data;
+- organizing experimental outputs for comparison across scenarios; and
+- troubleshooting simulation, model-integration, trajectory, and data-collection behavior.
+
+The autonomous-driving model and external frameworks used by this project are third-party technologies. My contributions focus on their **integration, scenario development, experimental design, data collection, and analysis infrastructure**.
+
+---
 
 ## Repository Structure
 
 ```text
 contained_source_code/
-|-- config/
-|   |-- CARLA_actors/          CARLA connection, spawning, sensors, and actor behavior
-|   `-- ml_model/              Model adapters, scenario-specific actor logic, and output writers
-|-- controls/                  Scripted, hazard-aware, light-aware, and model-driven controls
-|-- scenarios/
-|   |-- hard_controls/         Scenarios using predefined control rules
-|   `-- model/                 Scenarios driven by model predictions and PCLA-derived controls
-`-- output/                    Generated experiment/run data; not executable source code
+│
+├── config/
+│   ├── CARLA_actors/
+│   └── ml_model/
+│
+├── controls/
+│
+├── scenarios/
+│   ├── hard_controls/
+│   └── model/
+│
+└── output/
+    └── model/
 ```
 
-See [Configuration](config/README.md), [Controls](controls/README.md), [Scenarios](scenarios/README.md), and [Outputs](output/README.md) for subsystem details.
+### Directory Overview
 
-## Architecture
+| Directory | Purpose |
+| --- | --- |
+| `config/` | Reusable configuration and setup components for CARLA actors, sensors, and model integration. |
+| `controls/` | Vehicle actions and control logic used by scripted and model-driven scenarios. |
+| `scenarios/` | Controlled CARLA experiments used to test different driving conditions and hazards. |
+| `output/` | Recorded simulation and model data generated during experimental runs. |
+
+More detailed documentation is available inside the major directories.
+
+---
+
+## System Architecture
+
+The project uses a modular structure so scenarios can share common actor, sensor, control, and model-integration components.
 
 ```text
-CARLA and model configuration
-             |
-             v
-scenario entry point and actor placement
-             |
-             v
-CARLA ego vehicle, environment, and sensors
-             |
-             v
-scripted controls OR PCLA model inference/control adapter
-             |
-             v
-simulation ticks and scenario-specific monitoring
-             |
-             v
-run folders, logs, sensor captures, and aggregate CSV tables
+Scenario Configuration
+        │
+        ▼
+CARLA Environment & Actors
+        │
+        ▼
+Sensors & Model Inputs
+        │
+        ▼
+Autonomous Model / Scripted Controls
+        │
+        ▼
+Vehicle Behavior
+        │
+        ▼
+Data Collection
+        │
+        ▼
+Behavior Analysis
 ```
 
-Scenario scripts assemble reusable components rather than defining every behavior locally. `config/CARLA_actors/` manages CARLA actors and sensors. `controls/` interprets traffic lights or hazards, applies action primitives, and handles model-derived decisions. Model scenarios additionally use `config/ml_model/` for PCLA configuration, synchronized model sensors, navigation inputs, object-specific perception checks, and structured output generation.
+Rather than defining every component separately inside each scenario, reusable modules provide common functionality for CARLA actors, sensors, controls, model integration, and data collection.
 
-## Scenario Categories
+---
 
-- **Scripted intersection scenarios:** exercise fixed traffic-light sequences and rule-based stop/go or hazard responses. Variants include ordinary and right-lane stop/go runs, pedestrian and bicyclist crossings, and a turning-vehicle conflict.
-- **Model intersection scenarios:** let model predictions control the ego vehicle during traffic-light and vehicle-conflict conditions. The copied scenarios include simple stop/go, a broadside conflict, and a cut-in/interception conflict.
-- **Intersection-interception experiment:** factors early, medium, and late release configurations through one shared runner to vary nominal reaction margin.
-- **Object-in-Road experiment:** places a stationary chair, pedestrian, red-shirt pedestrian, or vehicle ahead of the ego vehicle and records model perception, target-speed, control, distance, and collision information.
+## Scenario Organization
 
-The scenario definitions establish experimental conditions; they do not establish experimental outcomes.
+The scenarios are divided primarily into **scripted-control scenarios** and **model-driven scenarios**.
 
-## Technologies Visible in the Source
+### Scripted-Control Scenarios
 
-- Python
-- CARLA Simulator Python API
-- PyTorch
-- NumPy
-- OpenCV
-- `timm`
-- `requests`
-- Hugging Face Hub (checkpoint download helper)
-- PCLA and its TransFuser++ agent interfaces
+**Location:** `scenarios/hard_controls/`
 
-No complete dependency manifest or authoritative version list is included in this self-contained copy.
+These scenarios use predefined vehicle actions and hazard-response logic. They allow scenario behavior and environmental interactions to be developed and tested independently of the autonomous-driving model.
 
-## Setup and Requirements
+Examples include:
 
-The source establishes the following prerequisites:
+- traffic-light stop/go behavior;
+- pedestrian crossings;
+- bicyclist crossings; and
+- vehicle interactions at intersections.
 
-1. A CARLA server reachable at `localhost:2000` unless `connect_to_carla()` is called with different values.
-2. A Python environment containing the imported CARLA and machine-learning libraries.
-3. For model-driven scenarios, a `PCLA/` directory at this repository root with the package layout referenced by `config/ml_model/setup/model_loader.py` and `pcla_navigation.py`.
-4. The `tfv4_l6_0` configuration/checkpoint files under PCLA's `pcla_agents/transfuserv4_pretrained/longest6/tfpp_all_0/` path. `config/ml_model/setup/fetch_transfuser_model.py` is the repository's download helper.
-5. For the live model-scenario path, a reachable remote `/predict` service whose base URL is stored in `config/ml_model/setup/endpoint.txt`.
+### Model-Driven Scenarios
 
-PCLA, its inference service, CARLA installation files, and environment specifications are not included here. Consequently, this copy documents the integration but is not, by itself, a complete reproducible installation bundle.
+**Location:** `scenarios/model/`
 
-## Running the Code
+These scenarios integrate the autonomous-driving model so that model predictions influence the behavior of the ego vehicle.
 
-The scenario files expose `main()` entry points and `if __name__ == "__main__"` guards. Run them from the repository root so imports such as `config`, `controls`, and `scenarios` resolve correctly. Representative entry points are:
+Current model-driven scenario families include:
 
-```text
-scenarios/hard_controls/intersection/simple_stop_go.py
-scenarios/hard_controls/intersection/pedestrian_crossing.py
-scenarios/model/intersection/simple_stop_go.py
-scenarios/model/intersection_interception/early_interception.py
-scenarios/model/object_in_road/chair_object.py
-```
+| Scenario Family | Purpose |
+| --- | --- |
+| `intersection/` | Tests model behavior around traffic lights and intersection conditions. |
+| `intersection_interception/` | Creates controlled vehicle conflicts with different reaction margins. |
+| `object_in_road/` | Places stationary objects or road users in the ego vehicle's path. |
 
-The source does not provide a single launcher, command-line interface, or verified end-to-end setup command. Review scenario constants and prerequisites before executing a run; several source comments explicitly identify tuning values or assumptions that still require live validation.
+---
 
-## Outputs
+## Data Collection
 
-Depending on the scenario, runs can produce RGB PNG frames, LiDAR PLY point clouds, GNSS/GPS JSON, collision JSON, human-readable scenario logs, per-inference CSV files, and aggregate CSV summaries. The structured model experiments also generate run metadata and data dictionaries. See [output/README.md](output/README.md) and the experiment-specific documentation linked there.
+Model-driven experiments record information across multiple parts of the simulation.
+
+The collected data can connect:
+
+| Category | Example Information |
+| --- | --- |
+| Simulation | Time, scenario state, run information |
+| Ground Truth | Object type, object distance, collision state |
+| Perception | Detected objects and model perception information |
+| Model Decision | Selected action and target behavior |
+| Vehicle Behavior | Speed, acceleration, throttle, brake, steering |
+| Sensors | RGB camera, LiDAR, GPS/GNSS |
+| Outcome | Collision events and final run state |
+
+This structure allows a model's behavior to be reconstructed over time rather than evaluating an experiment only by its final outcome.
+
+---
+
+## Tools & Technologies
+
+The project uses:
+
+- **Python**
+- **CARLA 0.9.16**
+- **Bench2Drive / Bench2DriveZoo**
+- **PCLA / TransFuser++**
+- **PyTorch**
+- **NumPy**
+- **Git / GitHub**
+
+Third-party autonomous-driving models, frameworks, and libraries are integrated into the research environment but are not original components of this project.
+
+---
+
+## Current Progress
+
+This research is ongoing.
+
+### Completed
+
+- Developed the modular CARLA scenario framework.
+- Built controlled traffic-light and hazard scenarios.
+- Developed scripted interactions involving pedestrians, bicyclists, vehicles, and other roadway conditions.
+- Built the intersection-interception experiment.
+- Integrated the autonomous-driving model into the intersection-interception scenario.
+- Implemented structured simulation and model data collection.
+- Collected simulation data including vehicle behavior, perception, model decisions, and collision information.
+
+### In Progress
+
+- Integrating and testing the autonomous-driving model with the chair object-in-road scenario.
+- Expanding model-driven testing to additional controlled scenarios.
+- Organizing collected data for comparison across experimental conditions.
+
+---
+
+## Future Work
+
+Future development and research will focus on:
+
+- completing model integration for the chair scenario;
+- running additional controlled scenarios;
+- comparing model behavior across different safety-critical situations;
+- analyzing collected data for patterns in unsafe or unexpected behavior; and
+- using these findings to support future autonomous-driving error-detection work.
+
+---
+
+## Documentation
+
+Additional technical documentation is available for the major components of the project:
+
+- [`config/`](config/README.md) — CARLA and model configuration.
+- [`config/ml_model/`](config/ml_model/README.md) — autonomous-driving model integration.
+- [`controls/`](controls/README.md) — vehicle and scenario control modules.
+- [`scenarios/`](scenarios/README.md) — scenario organization and experimental framework.
+- [`scenarios/model/`](scenarios/model/README.md) — model-driven experiments.
+- [`output/`](output/README.md) — collected experimental data.
+- [`output/model/intersection_interception/`](output/model/intersection_interception/README.md) — intersection-interception experiment outputs.
+- [`output/model/object_in_road/`](output/model/object_in_road/README.md) — object-in-road experiment outputs.
+
+---
 
 ## Project Status
 
-This is ongoing research software. Some scenario parameters are documented in the source as placeholders or values requiring confirmation in a live CARLA/model session. Existing output demonstrates that runs were recorded; no claim of validated performance, safety, statistical significance, or completed experimental analysis is made here.
+This repository represents an **ongoing undergraduate research project**.
 
-## Directory Documentation
+The current software provides the simulation, model-integration, and data-collection infrastructure used to conduct controlled autonomous-driving experiments. Additional scenarios and analysis methods continue to be developed as the research progresses.
 
-- [Configuration and actor utilities](config/README.md)
-- [Model integration and experiment support](config/ml_model/README.md)
-- [Control modules](controls/README.md)
-- [Scenario hierarchy](scenarios/README.md)
-- [Model-driven scenarios](scenarios/model/README.md)
-- [Generated outputs](output/README.md)
-- [Intersection Interception experiment](output/model/intersection_interception/README.md)
-- [Object in Road experiment](output/model/object_in_road/README.md)
+---
 
+## Acknowledgment
+
+This research is conducted at the **University of Michigan-Dearborn** and is **sponsored by Ford Motor Company**.
