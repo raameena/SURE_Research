@@ -1,32 +1,59 @@
-# Object in Road
+# Object in Road Experiment
 
-## Purpose
+This directory contains generated data for model-driven scenarios with a stationary object placed in the ego vehicle's lane. The experiment compares model perception and driving behavior across different object types and pedestrian appearances.
 
-This experiment evaluates how the driving model perceives and responds to a stationary object placed directly in the ego vehicle's lane.
+## Research Question
 
-## Research question
+How does object identity affect model perception, target-speed prediction, and stopping behavior when the road geometry and starting conditions are held constant?
 
-How does object identity affect the model's perception, target-speed prediction, and stopping behavior when the road geometry and starting conditions are held constant?
+## Scenario Variants
 
-## Scenario variants
+| Directory | Scenario |
+| --- | --- |
+| `chair_object/` | A stationary plastic chair placed ahead of the ego vehicle. |
+| `pedestrian_object/` | A stationary pedestrian placed ahead of the ego vehicle. |
+| `pedestrian_in_red/` | The pedestrian scenario using the configured red-shirt pedestrian blueprint. |
+| `vehicle_object/` | A stationary vehicle placed ahead of the ego vehicle. |
 
-- **Chair:** an out-of-distribution plastic chair.
-- **Pedestrian:** an in-distribution stationary pedestrian.
-- **Pedestrian in Red:** the stationary-pedestrian setup using the configured red-shirt pedestrian blueprint.
-- **Vehicle:** an in-distribution stationary vehicle.
+The primary changed condition is object identity or pedestrian appearance.
 
-## Controlled conditions
+## Controlled Conditions
 
-The scenarios use the same CARLA map, ego spawn point, initial object distance, simulation frequency, inference interval, camera mount, model configuration, and straight-road approach. The obstacle remains stationary in the ego lane.
+Comparable runs use the same CARLA map, ego spawn point, starting object distance, simulation frequency, inference interval, camera configuration, model configuration, and straight-road approach. The object remains stationary in the ego lane.
 
-## Variable being tested
+Check each run's `README.md` before combining data because settings can differ during development.
 
-The principal independent variable is object identity or pedestrian appearance: chair, pedestrian, pedestrian in red, or vehicle.
+## Directory Structure
 
-## Data collected
+```text
+object_in_road/
+├── all_inferences.csv
+├── all_runs.csv
+├── DATA_DICTIONARY.md
+├── chair_object/run_N/
+├── pedestrian_object/run_N/
+├── pedestrian_in_red/run_N/
+└── vehicle_object/run_N/
+```
 
-Run folders are grouped by scenario variant as `chair_object/run_N`, `pedestrian_object/run_N`, `pedestrian_in_red/run_N`, and `vehicle_object/run_N`. Each run records one structured row per inference in `inference_log.csv`, human-readable runtime diagnostics in `scenario_log.txt`, GPS readings, frame-aligned RGB images and LiDAR point clouds, and collision events. Aggregate inference and completed-run tables remain stored at the Object in Road family level in `all_inferences.csv` and `all_runs.csv`.
+Each `run_N/` directory can contain an inference CSV, scenario log, GPS and collision logs, RGB images, LiDAR point clouds, and a run-specific README.
 
-## Comparing runs
+## Recorded Data
 
-Compare variants using matching scenario settings. Use `all_inferences.csv` for tick-level model, perception, control, and safety measurements. Use `all_runs.csv` for run-level approach and stopping outcomes. Consult each run's README for its exact map, blueprint, weather, and settings.
+| Category | Examples |
+| --- | --- |
+| Ground truth | Object type, object distance, expected perception, and expected safe action |
+| Model output | Target-speed probabilities, semantic counts, selected target speed, and decoded action |
+| Vehicle behavior | Speed, acceleration, throttle, brake, and steering |
+| Safety measures | Perception/action checks, stopping timeliness, time to collision, and collision events |
+| Navigation and sensors | Route target, road command, RGB images, LiDAR point clouds, and GNSS data |
+
+Semantic image and BEV values are pixel or cell counts, not object counts. See [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md) for complete field definitions.
+
+## Using the Data
+
+- Use a run's `inference_log.csv` to follow model behavior over time.
+- Use `all_inferences.csv` to compare compatible rows across variants and runs.
+- Use `all_runs.csv` for run-level approach, stopping, and collision summaries.
+- Use run README files to match map, object, weather, and inference settings.
+

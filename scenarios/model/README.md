@@ -1,33 +1,57 @@
 # Model-Driven Scenarios
 
-The scenarios in this subtree leave longitudinal and lateral ego control to the integrated PCLA TransFuser++ prediction/control path. They observe model outputs against scenario-defined conditions; expected labels are used for evaluation and logging, not to replace the model's control with a scripted answer.
+Model-driven scenarios use autonomous-driving model predictions to control the ego vehicle. Scenario code defines the environment and expected conditions, while the PCLA TransFuser++ integration supplies throttle, brake, and steering.
 
-## `intersection/`
+## How Model Control Works
 
-- `simple_stop_go.py` runs controlled red/green traffic-light phases, interprets model semantic output, and records model decisions and applied control.
-- `T_bone_crash.py` combines signal phases with a scripted turning vehicle on a broadside conflict path. During the vehicle-relevant phase, object-specific perception/action expectations replace light-only expectations.
-- `interception_crash.py` creates a cut-in vehicle that turns into and settles in the ego lane. It uses longitudinal bumper gap and tiered expected actions; its source explicitly marks introduced geometry and friction values as requiring live validation.
+1. Spawn the ego vehicle and any traffic lights, obstacles, or hazard actors.
+2. Attach recording sensors and separate model-input camera and LiDAR sensors.
+3. Request frame-matched model inference.
+4. Convert the predicted checkpoint and target speed into CARLA control.
+5. Record the decision, applied control, ground truth, and safety measurements.
 
-These older intersection scripts use the general run-folder utility and scenario logs rather than the newer family-level structured-output classes.
+Expected perception and action labels support logging and later comparison. They do not replace the model's control command.
 
-## `intersection_interception/`
+## Experiment Families
 
-`early_interception.py`, `medium_interception.py`, and `late_interception.py` are thin entry points. Each passes a different `InterceptionScenarioConfig` to `run_interception_scenario.py`. The shared runner controls setup, fixed signal states, cut-in execution, model monitoring, and structured output. The variants change the ego travel-distance trigger before release, providing different nominal reaction margins; recorded gap, speed, and time-to-collision values are needed for actual run comparisons.
+| Directory | Purpose |
+| --- | --- |
+| `intersection/` | Tests model behavior around controlled traffic lights and intersection vehicle conflicts. |
+| `intersection_interception/` | Runs early, medium, and late cut-in conditions through a shared experiment runner. |
+| `object_in_road/` | Tests model behavior when a stationary object or road user is placed ahead of the ego vehicle. |
 
-Experiment documentation: [Intersection Interception](../../output/model/intersection_interception/README.md).
+## Intersection Scenarios
 
-## `object_in_road/`
+| File | Purpose |
+| --- | --- |
+| `intersection/simple_stop_go.py` | Runs controlled red and green signal phases and records model decisions and controls. |
+| `intersection/T_bone_crash.py` | Adds a turning vehicle on a broadside conflict path and switches from light-based to vehicle-based evaluation when relevant. |
+| `intersection/interception_crash.py` | Creates a cut-in vehicle that turns into and settles in the ego lane. It uses longitudinal bumper gap and distance-based expected actions. |
 
-- `chair_object.py` places a stationary chair ahead of the ego vehicle. Because the documented model class map lacks a chair class, its resolver checks for non-drivable BEV occupancy at the projected object location.
-- `pedestrian_object.py` places a stationary pedestrian and evaluates the model's walker-class BEV output.
-- `pedestrian_in_red.py` reuses the pedestrian runner with a specified red-shirt pedestrian blueprint and corresponding output label.
-- `vehicle_object.py` places a stationary vehicle and evaluates the vehicle-class BEV output.
+Some conflict geometry and friction values are marked for live validation in the source comments.
 
-These scripts use `PCLAWorldRouteNavigation`, structured Object-in-Road output writers, collision sensing, and independent recording/model sensor sets. They temporarily unload CARLA's parked-vehicle map layer and restore it during cleanup.
+## Intersection Interception
 
-Experiment documentation: [Object in Road](../../output/model/object_in_road/README.md).
+`early_interception.py`, `medium_interception.py`, and `late_interception.py` pass different release configurations to `run_interception_scenario.py`. The shared runner handles CARLA setup, fixed signal states, cut-in control, model inference, and structured output.
 
-## External Model Boundary
+See the [Intersection Interception output guide](../../output/model/intersection_interception/README.md).
 
-The PCLA package, TransFuser++ implementation, checkpoint, and remote inference service are external to this copied tree. The repository code supplies CARLA scenario orchestration, sensor synchronization, preprocessing/inference transport, controller adaptation, ground-truth comparison, and output recording around those dependencies.
+## Object in Road
+
+| File | Scenario Object | Perception Check |
+| --- | --- | --- |
+| `object_in_road/chair_object.py` | Stationary chair | Checks for non-drivable BEV occupancy near the projected chair location because the configured classes do not include a chair class. |
+| `object_in_road/pedestrian_object.py` | Stationary pedestrian | Uses the model's walker-class BEV output. |
+| `object_in_road/pedestrian_in_red.py` | Stationary red-shirt pedestrian | Reuses the pedestrian scenario with a specific blueprint and output label. |
+| `object_in_road/vehicle_object.py` | Stationary vehicle | Uses the model's vehicle-class BEV output. |
+
+These scenarios use world-route navigation and structured output writers. They unload CARLA's parked-vehicle map layer before a run and restore it during cleanup.
+
+See the [Object in Road output guide](../../output/model/object_in_road/README.md).
+
+## Related Components
+
+- Model setup and evaluation: [`../../config/ml_model/README.md`](../../config/ml_model/README.md)
+- Model control: [`../../controls/README.md`](../../controls/README.md)
+- Generated data: [`../../output/README.md`](../../output/README.md)
 

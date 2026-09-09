@@ -1,42 +1,61 @@
-# Scenario Suite
+# CARLA Scenario Suite
 
-This directory contains executable CARLA scenario entry points. Each script combines reusable configuration, actor, sensor, control, and logging modules with scenario-specific constants. The hierarchy separates scripted controls from model-driven evaluation.
+The `scenarios/` directory contains the executable simulation setups used by the project. Each scenario combines shared actor, sensor, control, model, and output components with a specific traffic condition or hazard.
 
-## Scripted Scenarios: `hard_controls/`
+## Scenario Categories
 
-These scenarios use CARLA ground truth and predefined rules from `controls/hard_controls.py` or `controls/hazard_controls.py`. They provide controlled baselines and reusable hazard setups; they are not evaluations of learned decision-making.
-
-All copied scripted scenarios are under `hard_controls/intersection/`:
-
-| Scenario | Controlled interaction |
+| Category | Description |
 | --- | --- |
-| `simple_stop_go.py` | Runs red and green traffic-light phases and applies the corresponding stop/forward actions. |
-| `right_lane_stop_go.py` | Exercises the light-based stop/go behavior from the driving lane to the right of the configured base spawn. |
-| `pedestrian_crossing.py` | Releases a pedestrian across the ego path while monitoring both the light and the pedestrian hazard. |
-| `bicyclist_crossing.py` | Releases a bicycle actor across the ego path and uses the same light-plus-hazard monitoring structure. |
-| `car_crash_intersection.py` | Scripts a second vehicle along a generated left-turn path and evaluates it through time-to-collision-aware hazard logic. Source comments identify speed/timing values as requiring live tuning. |
+| `hard_controls/` | Scripted-control scenarios that use predefined vehicle actions and hazard-response rules. |
+| `model/` | Model-driven scenarios in which autonomous-driving model predictions control the ego vehicle. |
 
-These scripts create run folders through `carla_config.create_run_folder()`, attach recording sensors, execute the controlled sequence, save available GPS/collision data, restore traffic-light state where applicable, and destroy actors.
+Scripted-control scenarios support scenario development and controlled baseline behavior without model inference. Model-driven scenarios use the same types of conditions to study autonomous-driving model behavior.
 
-## Model-Driven Scenarios: `model/`
+## Scripted-Control Scenarios
 
-These scenarios attach model-input camera/LiDAR sensors, request PCLA TransFuser++ predictions, and apply PCLA-controller throttle, brake, and steering to the ego vehicle. Scenario code supplies ground truth for later comparison but does not script the ego vehicle to produce the expected response.
+All scripted-control scenarios are currently under `hard_controls/intersection/`.
 
-- `intersection/` contains model-controlled traffic-light and vehicle-conflict scenarios.
-- `intersection_interception/` contains early, medium, and late cut-in entry points backed by one shared runner.
-- `object_in_road/` contains straight-road stationary-obstacle scenarios for a chair, pedestrian, red-shirt pedestrian, and vehicle.
+| Scenario | Purpose |
+| --- | --- |
+| `simple_stop_go.py` | Runs red and green traffic-light phases with predefined stop and forward actions. |
+| `right_lane_stop_go.py` | Repeats the stop/go sequence from the driving lane to the right of the configured base spawn. |
+| `pedestrian_crossing.py` | Releases a pedestrian across the ego vehicle's path and combines light-based control with pedestrian hazard checks. |
+| `bicyclist_crossing.py` | Uses the same hazard-aware structure for a crossing bicyclist. |
+| `car_crash_intersection.py` | Scripts a second vehicle along a left-turn path and uses time-to-collision-aware hazard logic. |
 
-See [Model-Driven Scenarios](model/README.md) for file-level detail.
+The vehicle-conflict scenario includes speed and timing values that still require live CARLA tuning, as noted in the source file.
 
-## Common Execution Flow
+## Model-Driven Scenario Groups
 
-1. Connect to CARLA and select the configured map spawn point or lane.
-2. Configure synchronous stepping where required by model sensor alignment.
-3. Create a run directory and spawn the ego/scenario actors.
-4. Attach independent recording sensors and, for model scenarios, model-input sensors.
-5. Execute fixed signal phases or an object/hazard monitoring loop.
-6. Record outputs and restore traffic-light, world, or map-layer state.
-7. Stop sensors and destroy spawned actors.
+| Scenario Group | Description |
+| --- | --- |
+| `model/intersection/` | Traffic-light and vehicle-conflict scenarios using model-derived ego-vehicle controls. |
+| `model/intersection_interception/` | Early, medium, and late cut-in conditions that vary the nominal reaction margin. |
+| `model/object_in_road/` | Stationary chair, pedestrian, red-shirt pedestrian, and vehicle conditions on a straight-road approach. |
 
-The precise constants, run duration, actor geometry, and cleanup behavior remain defined in each scenario file. Some model and conflict scenarios explicitly document parameters that have not yet been validated in a live end-to-end session.
+See [`model/README.md`](model/README.md) for file-level descriptions.
+
+## Common Scenario Workflow
+
+```text
+Connect to CARLA
+       ↓
+Configure the world and spawn actors
+       ↓
+Attach recording and model sensors
+       ↓
+Run traffic-light or hazard conditions
+       ↓
+Apply scripted or model-driven controls
+       ↓
+Record outputs and clean up actors
+```
+
+Each scenario defines its own spawn point, actor placement, duration, and monitoring interval. Model-driven scenarios also enable synchronous stepping so camera and LiDAR frames align with each inference.
+
+## Related Components
+
+- [`../config/README.md`](../config/README.md) describes CARLA actors, sensors, and model setup.
+- [`../controls/README.md`](../controls/README.md) describes the control paths used during a run.
+- [`../output/README.md`](../output/README.md) describes the generated data.
 

@@ -1,46 +1,52 @@
-# Generated Experiment Outputs
+# Experiment Outputs
 
-This directory primarily contains generated run data, not executable source code. The code that creates and populates the structured model-output hierarchy is in `config/ml_model/output_config/`; scenario entry points are in `scenarios/model/`.
+The `output/` directory contains generated experiment data rather than executable program logic. Each run connects model behavior, vehicle state, simulator ground truth, and sensor data to one scenario execution.
 
-## Organization
+## Directory Structure
 
 ```text
 output/model/
-|-- intersection_interception/
-|   |-- all_inferences.csv
-|   |-- all_runs.csv
-|   |-- DATA_DICTIONARY.md
-|   |-- README.md
-|   `-- run_N/
-`-- object_in_road/
-    |-- all_inferences.csv
-    |-- all_runs.csv
-    |-- DATA_DICTIONARY.md
-    |-- README.md
-    `-- <scenario_variant>/run_N/
+├── intersection_interception/
+│   └── run_N/
+└── object_in_road/
+    └── <scenario_variant>/run_N/
 ```
 
-The Intersection Interception family groups runs directly under the experiment directory. Object-in-Road runs are first grouped by variant, such as `chair_object`, `pedestrian_object`, `pedestrian_in_red`, or `vehicle_object`.
+The Intersection Interception experiment stores runs directly under its experiment directory. Object-in-Road runs are grouped by variant, such as `chair_object/`, `pedestrian_object/`, `pedestrian_in_red/`, or `vehicle_object/`.
 
-## Run Contents
+## Experiment Folders
 
-A structured run can contain:
+| Directory | Contents |
+| --- | --- |
+| `model/intersection_interception/` | Early, medium, and late cut-in experiment data. |
+| `model/object_in_road/` | Stationary chair, pedestrian, red-shirt pedestrian, and vehicle experiment data. |
 
-- `inference_log.csv`: one row per inference attempt for that run;
-- `scenario_log.txt`: human-readable runtime diagnostics;
-- `gps_log.json`: collected GNSS readings;
-- `collision_log.json`: collision-sensor events;
-- `images/frame_<CARLA frame>.png`: RGB recording frames;
-- `lidar_pointclouds/frame_<CARLA frame>.ply`: LiDAR recordings; and
-- `README.md`: run-specific configuration and notes.
+## Run Files
 
-The family-level `all_inferences.csv` appends compatible inference rows across runs. `all_runs.csv` contains summaries for runs finalized as completed. Consult each family's `DATA_DICTIONARY.md` for authoritative columns, datatypes, units, and blank-value semantics.
+| File / Directory | Purpose |
+| --- | --- |
+| `inference_log.csv` | Stores one row for each inference attempt in a run. |
+| `scenario_log.txt` | Stores human-readable runtime events and diagnostics. |
+| `gps_log.json` | Stores GNSS readings. |
+| `collision_log.json` | Stores collision-sensor events. |
+| `images/` | Stores RGB frames as `frame_<CARLA frame>.png`. |
+| `lidar_pointclouds/` | Stores LiDAR frames as `frame_<CARLA frame>.ply`. |
+| `README.md` | Records the run configuration and notes. |
 
-## Interpretation
+## Experiment-Level Files
 
-The data includes simulator state, model target-speed probabilities and decoded actions, applied controls, semantic class pixel/cell counts, scenario ground truth, distance or time-to-collision measures, and collision observations where supported by the experiment. Pixel/cell counts are not object counts. Scenario/run README files document configuration details needed when deciding whether runs are comparable.
+| File | Purpose |
+| --- | --- |
+| `all_inferences.csv` | Combines compatible inference rows across runs in one experiment. |
+| `all_runs.csv` | Stores one summary row for each completed run. |
+| `DATA_DICTIONARY.md` | Defines CSV columns, units, datatypes, and blank-value behavior. |
+| `README.md` | Explains the experiment and run organization. |
 
-These files are records of executions, not validated findings. No performance, safety, or statistical conclusion should be inferred from their presence alone.
+## Using the Data
+
+Recorded fields can include ego-vehicle motion, model probabilities and actions, applied control, semantic counts, object distance, time to collision, and collision events. Pixel and BEV-cell values are class-assigned counts, not object counts.
+
+Use each run README to confirm its configuration and the corresponding data dictionary to interpret CSV fields.
 
 ## Experiment Documentation
 

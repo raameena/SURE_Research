@@ -1,40 +1,55 @@
 # Vehicle Controls
 
-The modules in this directory turn scenario state or model output into CARLA vehicle commands. They are shared by both scripted scenarios and model-evaluation scenarios.
+The `controls/` directory contains the vehicle actions and decision logic shared across the scenario suite. It supports scripted-control scenarios, hazard-aware behavior, traffic-light sequences, and model-driven control.
 
-## Modules
+## Main Components
 
-### `actions.py`
+| File | Purpose |
+| --- | --- |
+| `actions.py` | Defines reusable actions such as drive, slow, coast, stop, hard brake, turn, and reverse. It also provides vehicle-speed helpers. |
+| `hard_controls.py` | Maps observed traffic-light colors to predefined actions and monitors light-based scripted-control scenarios. |
+| `hazard_controls.py` | Detects nearby actors, evaluates safety zones, estimates time to collision, and combines hazard response with traffic-light behavior. |
+| `light_controls.py` | Finds the ego vehicle's traffic light, logs its state, controls fixed signal sequences, measures stop-line distance, and restores signal behavior. |
+| `ml_controls.py` | Interprets autonomous-driving model output, applies model-derived controls, evaluates expected behavior, and records inference-level information. |
 
-Defines the `VehicleAction` vocabulary, default `VehicleControl` mappings, and `apply_action()`. Convenience functions expose forward driving, slow driving, coasting, stopping, hard/emergency braking, turning, reversing, and speed measurement. These are direct command primitives; they do not detect hazards or interpret model output.
+## Control Types
 
-### `hard_controls.py`
+### Reusable Action Primitives
 
-Implements predefined traffic-light behavior. Red stops the vehicle, green drives forward, yellow slows, and an unknown state uses a conservative stop. `monitor_light_and_act()` periodically observes the active signal, records light/action information, applies the corresponding scripted action, and advances the simulation.
+`actions.py` converts named actions into CARLA `VehicleControl` values. Higher-level control modules use these functions to apply consistent commands.
 
-### `hazard_controls.py`
+### Scripted Control
 
-Extends scripted light handling with nearby-actor checks. It finds selected CARLA actor types, computes actor position relative to the ego vehicle, estimates time to collision from relative motion, evaluates safety zones, and monitors traffic lights and hazards together. Pedestrian and bicyclist scenarios use spatial safety-zone logic; the vehicle-conflict path can use time-to-collision gating.
+`hard_controls.py` selects predefined actions from the current traffic-light state:
 
-### `light_controls.py`
+- red: stop;
+- yellow: slow;
+- green: drive forward; and
+- unknown: stop conservatively.
 
-Normalizes CARLA traffic-light states, logs signal phases, estimates distance to a stop line, finds the light affecting the ego vehicle, changes or freezes signal state, runs fixed light sequences, monitors state, and restores an unfrozen light. Scenario files use these helpers to construct controlled signal phases.
+### Hazard-Aware Control
 
-### `ml_controls.py`
+`hazard_controls.py` adds pedestrian, bicyclist, or vehicle checks to the scripted-control path. Depending on the scenario, it uses relative position, a safety zone, or time to collision to decide when the ego vehicle should slow or stop.
 
-Connects model predictions to vehicle control and research logging. It:
+### Traffic-Light Control
 
-- maps target-speed bins to high-level actions;
-- interprets camera and bird's-eye-view semantic class maps;
-- projects world locations into the model's BEV grid;
-- selects actions, including an urgency-dependent hard-brake path;
-- requests synchronized model/control predictions;
-- applies the PCLA-derived `VehicleControl` on each tick; and
-- records decisions, class scores, expected/actual perception, action correctness, stopping timeliness, distance, time to collision, and collision state through callbacks.
+`light_controls.py` manages the environmental side of intersection scenarios. It can force signal states, freeze them for a controlled phase, run a fixed sequence, and restore normal behavior afterward.
 
-`monitor_with_model_and_act()` handles traffic-light-oriented phases. `monitor_with_model_and_act_for_object()` generalizes monitoring to a scenario actor and accepts scenario-specific expectation, perception, and distance functions.
+### Model-Driven Control
 
-## Scripted Versus Model Control
+`ml_controls.py` requests synchronized predictions through `config/ml_model/setup/model_loader.py`. It then:
 
-Scripted scenarios call `hard_controls.py` or `hazard_controls.py`, which select known action primitives from CARLA ground truth. Model scenarios obtain a prediction through `config/ml_model/setup/model_loader.py`; the TransFuser++ controller adapter supplies throttle, brake, and steering, while the high-level decoded action is used for interpretation and evaluation. The model scenarios do not inject a separate emergency response solely to force a desired experimental outcome.
+1. decodes the model's target-speed prediction;
+2. runs the PCLA controller adapter;
+3. applies throttle, brake, and steering;
+4. interprets camera and bird's-eye-view semantic output; and
+5. records decisions, controls, perception checks, distances, collision state, and timing information.
+
+`monitor_with_model_and_act()` handles traffic-light phases. `monitor_with_model_and_act_for_object()` applies the same model-control structure to a specific scenario actor.
+
+## Relationship to Scenarios
+
+Scripted-control scenarios use `hard_controls.py` or `hazard_controls.py`. Model-driven scenarios use `ml_controls.py` while retaining `light_controls.py` for controlled signal conditions.
+
+See [`../scenarios/README.md`](../scenarios/README.md) for the scenario hierarchy.
 

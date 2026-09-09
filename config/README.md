@@ -1,31 +1,47 @@
 # Configuration and CARLA Components
 
-This directory contains reusable CARLA actor/sensor utilities and the integration layer used by model-driven experiments. Despite the directory name, these modules include executable setup and behavior code as well as constants.
+The `config/` directory contains reusable CARLA setup, actor, sensor, and model-integration components. Scenario scripts use these modules to assemble each simulation without duplicating common behavior.
 
-## `CARLA_actors/`
+## Directory Structure
 
-| Module | Responsibility |
+```text
+config/
+├── CARLA_actors/
+└── ml_model/
+    ├── actors/
+    ├── output_config/
+    └── setup/
+```
+
+## CARLA Components
+
+| File | Purpose |
 | --- | --- |
-| `carla_config.py` | Connects to CARLA, manages synchronous settings and ticks, creates run folders, spawns ego vehicles at selected map locations or lanes, writes JSON logs, and destroys spawned actors. |
-| `sensors.py` | Attaches recording RGB, LiDAR, GNSS, and collision sensors and provides the spectator-follow view. These recording sensors are separate from model-input sensors. |
-| `spawn_locations.py` | Interactive utility for browsing CARLA spawn points using a spawned vehicle and spectator camera. |
-| `pedestrian.py` | Spawns, holds, starts, and stops crossing pedestrians. |
-| `bicyclist.py` | Spawns, holds, starts, and stops crossing bicycle actors. |
-| `crash_car.py` | Finds junction geometry, spawns a second vehicle, constructs a left-turn path, and updates or stops its scripted maneuver. |
+| `CARLA_actors/carla_config.py` | Connects to CARLA, manages synchronous settings, creates run folders, spawns the ego vehicle, writes JSON logs, and cleans up actors. |
+| `CARLA_actors/sensors.py` | Attaches RGB, LiDAR, GNSS, and collision sensors used for research data collection. It also provides the spectator-follow view. |
+| `CARLA_actors/spawn_locations.py` | Provides an interactive utility for browsing CARLA spawn points. |
+| `CARLA_actors/pedestrian.py` | Spawns, holds, starts, and stops crossing pedestrians. |
+| `CARLA_actors/bicyclist.py` | Spawns, holds, starts, and stops crossing bicyclists. |
+| `CARLA_actors/crash_car.py` | Finds junction geometry and controls a second vehicle along a generated left-turn path. |
 
-Scenario modules import these functions to keep connection, actor, sensor, and cleanup behavior consistent. The scenario remains responsible for choosing spawn indices, distances, speeds, durations, and which actors to combine.
+## Model-Related Components
 
-## `ml_model/`
+| Directory | Purpose |
+| --- | --- |
+| `ml_model/setup/` | Loads PCLA configuration, prepares model inputs, provides route navigation, adapts controller output, and evaluates expected behavior. |
+| `ml_model/actors/` | Defines experiment-specific actor placement, hazard geometry, perception checks, and expected actions. |
+| `ml_model/output_config/` | Creates structured run folders, CSV files, metadata, and data dictionaries. |
 
-The model subtree contains research integration code, not the external model implementation itself:
+See [`ml_model/README.md`](ml_model/README.md) for a detailed component map.
 
-- `setup/` loads PCLA configuration/checkpoints, prepares model sensors and inputs, provides world-route navigation, adapts TransFuser++ controller output, performs expectation checks, and includes checkpoint-fetch/smoke-test helpers.
-- `actors/` defines model-experiment actors, ground-truth expectations, perception resolvers, and early/medium/late interception parameters.
-- `output_config/` defines structured CSV schemas, run metadata, experiment documentation, sensor/log paths, and finalization behavior.
+## How Scenarios Use This Directory
 
-See [Model Integration and Experiment Support](ml_model/README.md) for details.
+1. Connect to CARLA through `carla_config.py`.
+2. Select a spawn location and create the ego vehicle.
+3. Add pedestrians, bicyclists, vehicles, or stationary objects.
+4. Attach the recording and collision sensors needed for the run.
+5. Load components from `ml_model/` for model-driven scenarios.
+6. Stop sensors, destroy actors, and restore simulation settings.
 
-## Relationship to Other Directories
-
-`scenarios/` selects and composes these components. `controls/` applies the resulting rule-based or model-derived vehicle behavior. Output helpers create data under `output/`; recording callbacks then populate the run directories while a scenario executes.
+Control decisions are handled in [`../controls/`](../controls/README.md), while executable scenarios are organized in [`../scenarios/`](../scenarios/README.md).
 

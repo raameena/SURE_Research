@@ -1,25 +1,62 @@
 # Intersection Interception Experiment
 
-## Research question
+This directory contains generated data for the model-driven Intersection Interception experiment. The experiment varies when a cut-in vehicle is released into the ego vehicle's lane.
 
-How does model behavior change as an unexpected cut-in vehicle turns into the ego lane with decreasing reaction margin?
+## Research Question
 
-## Scenarios
+How does model behavior change as an unexpected cut-in vehicle enters the ego lane with less reaction margin?
 
-- Early Interception
-- Medium Interception
-- Late Interception
+## Scenario Variants
 
-## Controlled variables
+| Variant | Release Timing | Nominal Reaction Margin |
+| --- | --- | --- |
+| Early Interception | Earliest release | Largest |
+| Medium Interception | Intermediate release | Moderate |
+| Late Interception | Latest release | Smallest |
 
-The ego spawn, map, model, sensors, weather, simulation rate, model inference interval, interception vehicle type, interception vehicle speed, left-turn merge path, fixed green ego traffic light, and fixed red non-ego intersection signals are held constant.
+Exact trigger distances are defined in `config/ml_model/actors/intersection_interception/`. Use recorded bumper gap, speed, and time to collision when comparing runs because the model-driven ego vehicle can vary between executions.
 
-## Primary changed variable
+## Controlled Conditions
 
-The cut-in vehicle's release trigger changes the interception timing. Early provides the largest nominal reaction margin, Medium a moderate margin, and Late the smallest. The vehicle uses `interception_car.py` logic: it turns into the ego lane and stops after reaching the end of the merge path. Actual gap, speed, and TTC must be used when comparing runs because the model-controlled ego can vary.
+The scenarios share the ego spawn, CARLA map, autonomous-driving model, sensors, weather, simulation frequency, inference interval, cut-in vehicle, merge path, and fixed intersection signal states.
 
-## Data collected
+The cut-in vehicle follows `interception_car.py`, turns into the ego lane, and stops after reaching the end of the merge path.
 
-The experiment records model target speed and probabilities, semantic outputs, actual ego speed and controls, longitudinal bumper gap to the interception vehicle, interception-vehicle speed, TTC when physically meaningful, and collision outcome. RGB and LiDAR filenames use the CARLA frame number recorded in each inference row.
+## Directory Structure
 
-Collision is an observed outcome, not a scripted goal. The ego remains controlled by the ML model; no emergency response is injected by the scenario.
+```text
+intersection_interception/
+├── all_inferences.csv
+├── all_runs.csv
+├── DATA_DICTIONARY.md
+└── run_N/
+    ├── README.md
+    ├── inference_log.csv
+    ├── scenario_log.txt
+    ├── gps_log.json
+    ├── collision_log.json
+    ├── images/
+    └── lidar_pointclouds/
+```
+
+## Recorded Data
+
+| Category | Examples |
+| --- | --- |
+| Model output | Target-speed probabilities, selected target speed, semantic output, and decoded action |
+| Vehicle behavior | Ego speed, acceleration, throttle, brake, and steering |
+| Interaction geometry | Longitudinal bumper gap, cut-in vehicle speed, and time to collision |
+| Events | Decision changes, perception/action checks, and collision events |
+| Sensors | Frame-aligned RGB images, LiDAR point clouds, and GNSS data |
+
+RGB and LiDAR filenames use the CARLA frame number recorded in each inference row. See [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md) for field definitions and units.
+
+## Using the Data
+
+- Use `inference_log.csv` to reconstruct one run over time.
+- Use `all_inferences.csv` to compare inference rows across runs.
+- Use `all_runs.csv` for run-level detection, braking, distance, and collision summaries.
+- Use each run's `README.md` to confirm its configuration.
+
+The ego vehicle remains under model control. Collision is recorded as an observed event rather than forced by the scenario.
+

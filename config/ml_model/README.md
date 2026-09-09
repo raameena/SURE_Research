@@ -1,35 +1,69 @@
 # Model Integration and Experiment Support
 
-This directory implements the repository-specific bridge between CARLA scenarios and an external PCLA TransFuser++ model. PCLA and the pretrained model are dependencies; their implementations are not included here.
+The `config/ml_model/` directory connects CARLA scenarios to the PCLA TransFuser++ autonomous-driving model. It contains model-loading adapters, route inputs, experiment-specific evaluation logic, and structured output tools.
 
-## Organization
+PCLA, TransFuser++, and the pretrained checkpoint are third-party components. This directory contains the integration code used by the research project.
 
-### `setup/`
+## Directory Structure
 
-- `model_loader.py` loads the `tfv4_l6_0` configuration and, for the local smoke-test path, its checkpoint. Live scenarios use `load_model_runtime()`, which keeps preprocessing and control support locally while sending forward passes to the configured remote `/predict` endpoint. It also creates frame-matched camera/LiDAR queues and converts returned predictions into a common result structure.
-- `pcla_navigation.py` uses PCLA route-planning utilities to construct a CARLA world route and provide ego-local target points with lagged road commands.
-- `tfpp_controller.py` adapts predicted checkpoints and target speed to PCLA's direct PID controller, returning a CARLA `VehicleControl`.
-- `error_detection.py` compares scenario-defined expected perception/actions with observed model decisions and evaluates stopping-distance timeliness when applicable.
-- `fetch_transfuser_model.py` downloads the explicitly listed PCLA checkpoint members from the configured Hugging Face repository into the PCLA directory structure.
-- `test_transfuser.py` is a CPU smoke test using dummy inputs; it is not an experiment or a performance evaluation.
-- `endpoint.txt` stores the remote inference base URL consumed by `model_loader.py`. Source comments describe this value as session-specific.
+```text
+ml_model/
+├── actors/
+│   ├── intersection_interception/
+│   └── object_in_road/
+├── output_config/
+└── setup/
+```
 
-### `actors/`
+## Setup Components
 
-The actor modules separate scenario-specific ground truth and hazard geometry from scenario orchestration:
+| File | Purpose |
+| --- | --- |
+| `setup/model_loader.py` | Loads the `tfv4_l6_0` configuration, prepares synchronized camera and LiDAR input, sends live inference requests, and returns model predictions. It also supports local checkpoint loading for the smoke test. |
+| `setup/pcla_navigation.py` | Builds a CARLA world route with PCLA tools and supplies ego-relative target points and road commands. |
+| `setup/tfpp_controller.py` | Converts predicted checkpoints and target speed into CARLA throttle, brake, and steering through PCLA's direct controller. |
+| `setup/error_detection.py` | Compares expected and observed perception/actions and checks stopping-distance timing when applicable. |
+| `setup/fetch_transfuser_model.py` | Downloads the configured PCLA checkpoint files from Hugging Face. |
+| `setup/test_transfuser.py` | Runs a CPU smoke test with dummy model inputs. |
+| `setup/endpoint.txt` | Stores the session-specific base URL used by the remote `/predict` service. |
 
-- `object_in_road/` supplies chair, pedestrian, red-shirt pedestrian, and vehicle spawning/perception logic. Pedestrian and vehicle variants query corresponding BEV semantic classes; the chair variant uses non-drivable occupancy near the projected object position because the documented class map has no chair class.
-- `intersection_interception/` defines a shared interception configuration plus early, medium, and late release distances.
-- `interception_car.py` implements cut-in control, longitudinal bumper-gap measurement, expected-action tiers, and vehicle-perception resolution.
-- `T_bone_car.py` provides corresponding expectation and perception logic for the broadside vehicle-conflict scenario.
+## Experiment Components
 
-### `output_config/`
+| File / Directory | Purpose |
+| --- | --- |
+| `actors/object_in_road/` | Spawns chair, pedestrian, red-shirt pedestrian, and vehicle obstacles and evaluates their model perception. |
+| `actors/intersection_interception/` | Defines the shared cut-in configuration and early, medium, and late release distances. |
+| `actors/interception_car.py` | Controls cut-in behavior, measures longitudinal bumper gap, and defines distance-based expected actions. |
+| `actors/T_bone_car.py` | Defines perception and action expectations for the broadside vehicle-conflict scenario. |
+| `output_config/object_in_road_output.py` | Records Object-in-Road inference rows, run summaries, metadata, and sensor/log paths. |
+| `output_config/intersection_interception_output.py` | Provides the equivalent structured output support for the Intersection Interception experiment. |
 
-`object_in_road_output.py` and `intersection_interception_output.py` create experiment/run folders, write per-inference and aggregate CSV rows, maintain metadata, emit data dictionaries, and finalize sensor and collision/GPS records. Their column definitions are the authoritative description of the structured tables.
+## Model-Control Workflow
 
-## Local and External Boundaries
+```text
+CARLA camera and LiDAR
+          ↓
+PCLA-compatible preprocessing
+          ↓
+Remote model inference
+          ↓
+Predicted checkpoint and target speed
+          ↓
+PCLA direct controller
+          ↓
+CARLA vehicle control
+```
 
-The code in this directory is integration, orchestration, evaluation, and output support developed for this research project. It imports PCLA modules such as `pcla_agents`, `leaderboard_codes`, and `pcla_functions`; uses a PCLA TransFuser++ checkpoint; and depends on CARLA, PyTorch, NumPy, OpenCV, `timm`, `requests`, and Hugging Face Hub. Those third-party systems are not part of this copied source.
+Model-driven scenarios also compare semantic predictions and selected actions with scenario-defined expectations. These checks are written to the experiment outputs for later analysis.
 
-No dependency lockfile is present, and the source does not establish a complete compatible version matrix. Model runs also depend on the external remote inference service expected by `model_loader.py`.
+## External Requirements
+
+Model-driven scenarios expect:
+
+- a `PCLA/` directory at the project root;
+- the configured TransFuser++ checkpoint under PCLA's pretrained-model directory;
+- CARLA, PyTorch, NumPy, OpenCV, `timm`, and `requests`; and
+- a reachable remote inference service configured in `endpoint.txt`.
+
+The project does not include a dependency lockfile or the remote inference service setup.
 
