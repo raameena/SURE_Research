@@ -1,0 +1,38 @@
+[
+    {
+        "frame": 180871,
+        "timestamp": 9268.927125386894,
+        "impact_actor_id": 131,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "magnitude": 0.0
+        }
+    },
+    {
+        "frame": 180873,
+        "timestamp": 9269.027125388384,
+        "impact_actor_id": 131,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": -132.74566650390625,
+            "y": -204.2140350341797,
+            "z": -2.6899060685536824e-05,
+            "magnitude": 243.5667959318515
+        }
+    },
+    {
+        "frame": 180877,
+        "timestamp": 9269.227125391364,
+        "impact_actor_id": 131,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": -26.697599411010742,
+            "y": -58.6353874206543,
+            "z": -103.21315002441406,
+            "magnitude": 121.67096946372718
+        }
+    }
+]

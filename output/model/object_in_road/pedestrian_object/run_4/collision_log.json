@@ -1,0 +1,110 @@
+[
+    {
+        "frame": 186076,
+        "timestamp": 9546.161338716745,
+        "impact_actor_id": 147,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "magnitude": 0.0
+        }
+    },
+    {
+        "frame": 186078,
+        "timestamp": 9546.261338718235,
+        "impact_actor_id": 147,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": 181.12034606933594,
+            "y": -5.18076229095459,
+            "z": -2.864802627300378e-05,
+            "magnitude": 181.1944261234109
+        }
+    },
+    {
+        "frame": 186081,
+        "timestamp": 9546.41133872047,
+        "impact_actor_id": 147,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": 43.31103515625,
+            "y": -3.3027760982513428,
+            "z": 32.561004638671875,
+            "magnitude": 54.28603060954738
+        }
+    },
+    {
+        "frame": 186082,
+        "timestamp": 9546.461338721216,
+        "impact_actor_id": 147,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": 4.721986770629883,
+            "y": -0.3665231764316559,
+            "z": 3.831777572631836,
+            "magnitude": 6.092127515654076
+        }
+    },
+    {
+        "frame": 186083,
+        "timestamp": 9546.51133872196,
+        "impact_actor_id": 147,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": 3.205897331237793,
+            "y": -0.26328393816947937,
+            "z": 3.7262120246887207,
+            "magnitude": 4.9225757671640205
+        }
+    },
+    {
+        "frame": 186084,
+        "timestamp": 9546.561338722706,
+        "impact_actor_id": 147,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": 2.342949867248535,
+            "y": -0.18754474818706512,
+            "z": 3.9911041259765625,
+            "magnitude": 4.631792229515441
+        }
+    },
+    {
+        "frame": 186085,
+        "timestamp": 9546.61133872345,
+        "impact_actor_id": 147,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": 8.820079803466797,
+            "y": -1.1381086111068726,
+            "z": 21.92905044555664,
+            "magnitude": 23.663734962891347
+        }
+    },
+    {
+        "frame": 186086,
+        "timestamp": 9546.661338724196,
+        "impact_actor_id": 147,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": 0.41068241000175476,
+            "y": -0.019580146297812462,
+            "z": 1.1326754093170166,
+            "magnitude": 1.2049883845437532
+        }
+    },
+    {
+        "frame": 186087,
+        "timestamp": 9546.711338724941,
+        "impact_actor_id": 147,
+        "impact_actor_type": "walker.pedestrian.0037",
+        "impulse": {
+            "x": 0.9770857691764832,
+            "y": 0.00951181910932064,
+            "z": 2.89888858795166,
+            "magnitude": 3.0591407487048285
+        }
+    }
+]

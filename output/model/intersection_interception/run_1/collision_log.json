@@ -1,0 +1,14 @@
+[
+    {
+        "frame": 1056,
+        "timestamp": 100.66271037980914,
+        "impact_actor_id": 25,
+        "impact_actor_type": "vehicle.dodge.charger_2020",
+        "impulse": {
+            "x": 2498.088134765625,
+            "y": 36908.29296875,
+            "z": 10734.990234375,
+            "magnitude": 38518.85966027894
+        }
+    }
+]

@@ -1,0 +1,197 @@
+2026-08-10 23:11:35,059 - INFO - PCLA navigation route initialized: traced_lookahead=251.0m, dense_points=266, sampled_points=10, initial_target_route_distance=50.3m, planner_min=7.5m, planner_max=50.0m.
+2026-08-10 23:11:37,653 - INFO - 
+=============================================================
+                    CARLA EXPERIMENT
+=============================================================
+Experiment:  Object in Road
+Scenario:    Chair
+Run:         1
+
+Map:         Town10HD_Opt
+Model:       tfv4_l6_0
+Ego Spawn:   10
+
+Object:      Plastic Chair (static.prop.plasticchair)
+Distance:    30.0 m
+Lane:        2
+
+Sensors
+  Recording: RGB, LiDAR, GPS, Collision
+  Model:     Camera, LiDAR
+
+Simulation
+  Frequency:       20 Hz
+  Model Inference: Every 5 ticks
+=============================================================
+RUN STARTED
+=============================================================
+2026-08-10 23:11:37,674 - WARNING - PCLA fidelity note: model inference currently runs every 5 ticks; original PCLA uses every tick.
+2026-08-10 23:11:39,279 - INFO - [PCLA NAVIGATION] target_point=(49.7506, -0.1399) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:39,280 - INFO - [TICK 000] time=0.00s | distance_to_object=29.67m | ego_speed=1.47m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=0.00
+2026-08-10 23:11:39,280 - INFO - [PERCEPTION] camera: vehicle=735 pedestrian=0 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:39,280 - INFO - [PCLA CONTROL] processed_target_speed=5.9997m/s brake_probability=0.000001 checkpoint=(3.0128, -1.9444) predicted_angle=-0.364855
+2026-08-10 23:11:39,280 - INFO - 
+=============================================================
+DECISION CHANGE
+Tick: 0
+STOP -> GO_FAST
+
+Distance to Object: 29.67 m
+Ego Speed: 1.47 m/s
+Target Speed: 6.00 m/s
+Confidence: 1.00
+=============================================================
+2026-08-10 23:11:40,954 - INFO - [PCLA NAVIGATION] target_point=(49.7506, -0.1399) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:40,955 - INFO - [TICK 005] time=0.25s | distance_to_object=29.66m | ego_speed=0.74m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=0.00
+2026-08-10 23:11:40,955 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=1 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:40,955 - INFO - [PCLA CONTROL] processed_target_speed=5.9998m/s brake_probability=0.000002 checkpoint=(3.0980, -1.7759) predicted_angle=-0.331373
+2026-08-10 23:11:42,481 - INFO - [PCLA NAVIGATION] target_point=(49.7506, -0.1399) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:42,481 - INFO - [TICK 010] time=0.50s | distance_to_object=29.66m | ego_speed=0.20m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=0.00
+2026-08-10 23:11:42,481 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=2 traffic_light=0 | BEV: vehicle=16 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:42,482 - INFO - [PCLA CONTROL] processed_target_speed=5.9999m/s brake_probability=0.000001 checkpoint=(3.0960, -1.7814) predicted_angle=-0.332396
+2026-08-10 23:11:44,071 - INFO - [PCLA NAVIGATION] target_point=(49.3737, -0.1396) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:44,072 - INFO - [TICK 015] time=0.75s | distance_to_object=29.29m | ego_speed=2.57m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=-0.50
+2026-08-10 23:11:44,072 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=21 traffic_light=0 | BEV: vehicle=61 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:44,072 - INFO - [PCLA CONTROL] processed_target_speed=5.9999m/s brake_probability=0.000000 checkpoint=(3.1152, -1.6938) predicted_angle=-0.317041
+2026-08-10 23:11:45,779 - INFO - [PCLA NAVIGATION] target_point=(48.4217, 3.9740) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:45,780 - INFO - [TICK 020] time=1.00s | distance_to_object=28.50m | ego_speed=3.76m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=-0.38
+2026-08-10 23:11:45,780 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=1 traffic_light=0 | BEV: vehicle=13 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:45,780 - INFO - [PCLA CONTROL] processed_target_speed=5.9999m/s brake_probability=0.000001 checkpoint=(3.1943, -1.5632) predicted_angle=-0.289730
+2026-08-10 23:11:47,401 - INFO - [PCLA NAVIGATION] target_point=(46.2340, 11.1366) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:47,402 - INFO - [TICK 025] time=1.25s | distance_to_object=27.47m | ego_speed=4.93m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=-0.29
+2026-08-10 23:11:47,402 - INFO - [PERCEPTION] camera: vehicle=92 pedestrian=0 traffic_light=0 | BEV: vehicle=54 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:47,402 - INFO - [PCLA CONTROL] processed_target_speed=5.9999m/s brake_probability=0.000002 checkpoint=(3.3220, -1.2266) predicted_angle=-0.225168
+2026-08-10 23:11:49,136 - INFO - [PCLA NAVIGATION] target_point=(42.9277, 17.4788) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:49,136 - INFO - [TICK 030] time=1.50s | distance_to_object=26.28m | ego_speed=5.54m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=-0.16
+2026-08-10 23:11:49,136 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=0 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:49,137 - INFO - [PCLA CONTROL] processed_target_speed=6.0000m/s brake_probability=0.000001 checkpoint=(3.4409, -0.6845) predicted_angle=-0.125007
+2026-08-10 23:11:50,822 - INFO - [PCLA NAVIGATION] target_point=(39.5735, 21.4703) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:50,822 - INFO - [TICK 035] time=1.75s | distance_to_object=24.97m | ego_speed=6.67m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.00 brake=1.00 steer=0.02
+2026-08-10 23:11:50,823 - INFO - [PERCEPTION] camera: vehicle=25 pedestrian=0 traffic_light=0 | BEV: vehicle=55 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:50,823 - INFO - [PCLA CONTROL] processed_target_speed=5.9997m/s brake_probability=0.000044 checkpoint=(3.4858, 0.0756) predicted_angle=0.013801
+2026-08-10 23:11:52,468 - INFO - [PCLA NAVIGATION] target_point=(37.7726, 21.7186) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:52,469 - INFO - [TICK 040] time=2.00s | distance_to_object=23.56m | ego_speed=6.37m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.04 brake=0.00 steer=0.19
+2026-08-10 23:11:52,469 - INFO - [PERCEPTION] camera: vehicle=26 pedestrian=152 traffic_light=0 | BEV: vehicle=32 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:52,469 - INFO - [PCLA CONTROL] processed_target_speed=5.9999m/s brake_probability=0.000004 checkpoint=(3.4049, 0.7723) predicted_angle=0.142000
+2026-08-10 23:11:54,144 - INFO - [PCLA NAVIGATION] target_point=(37.7895, 18.8725) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:54,145 - INFO - [TICK 045] time=2.25s | distance_to_object=22.27m | ego_speed=5.64m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=0.21
+2026-08-10 23:11:54,145 - INFO - [PERCEPTION] camera: vehicle=92 pedestrian=134 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:54,145 - INFO - [PCLA CONTROL] processed_target_speed=5.9999m/s brake_probability=0.000002 checkpoint=(3.3585, 0.9794) predicted_angle=0.180647
+2026-08-10 23:11:55,976 - INFO - [PCLA NAVIGATION] target_point=(38.1937, 14.7934) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:55,976 - INFO - [TICK 050] time=2.50s | distance_to_object=21.03m | ego_speed=5.53m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=0.20
+2026-08-10 23:11:55,977 - INFO - [PERCEPTION] camera: vehicle=84 pedestrian=194 traffic_light=0 | BEV: vehicle=15 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:55,977 - INFO - [PCLA CONTROL] processed_target_speed=6.0000m/s brake_probability=0.000001 checkpoint=(3.3779, 0.9697) predicted_angle=0.177976
+2026-08-10 23:11:57,621 - INFO - [PCLA NAVIGATION] target_point=(38.0804, 10.5161) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:57,621 - INFO - [TICK 055] time=2.75s | distance_to_object=19.61m | ego_speed=6.38m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.00 brake=0.00 steer=0.18
+2026-08-10 23:11:57,622 - INFO - [PERCEPTION] camera: vehicle=72 pedestrian=129 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:57,622 - INFO - [PCLA CONTROL] processed_target_speed=5.9998m/s brake_probability=0.000004 checkpoint=(3.4054, 0.8546) predicted_angle=0.156526
+2026-08-10 23:11:59,276 - INFO - [PCLA NAVIGATION] target_point=(37.3383, 6.4467) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:11:59,276 - INFO - [TICK 060] time=3.00s | distance_to_object=18.04m | ego_speed=6.50m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.06 brake=0.00 steer=0.14
+2026-08-10 23:11:59,277 - INFO - [PERCEPTION] camera: vehicle=735 pedestrian=127 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:11:59,277 - INFO - [PCLA CONTROL] processed_target_speed=6.0000m/s brake_probability=0.000000 checkpoint=(3.4402, 0.6754) predicted_angle=0.123420
+2026-08-10 23:12:00,964 - INFO - [PCLA NAVIGATION] target_point=(36.1756, 3.3703) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:00,964 - INFO - [TICK 065] time=3.25s | distance_to_object=16.51m | ego_speed=6.02m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.06 brake=0.00 steer=0.06
+2026-08-10 23:12:00,965 - INFO - [PERCEPTION] camera: vehicle=91 pedestrian=145 traffic_light=0 | BEV: vehicle=30 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:00,965 - INFO - [PCLA CONTROL] processed_target_speed=5.9991m/s brake_probability=0.000001 checkpoint=(3.4768, 0.3670) predicted_angle=0.066956
+2026-08-10 23:12:02,575 - INFO - [PCLA NAVIGATION] target_point=(34.8537, 1.8257) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:02,575 - INFO - [TICK 070] time=3.50s | distance_to_object=15.10m | ego_speed=5.46m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=-0.04
+2026-08-10 23:12:02,576 - INFO - [PERCEPTION] camera: vehicle=111 pedestrian=138 traffic_light=0 | BEV: vehicle=49 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:02,576 - INFO - [PCLA CONTROL] processed_target_speed=5.9994m/s brake_probability=0.000000 checkpoint=(3.4970, -0.0663) predicted_angle=-0.012072
+2026-08-10 23:12:04,321 - INFO - [PCLA NAVIGATION] target_point=(33.5107, 2.1952) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:04,321 - INFO - [TICK 075] time=3.75s | distance_to_object=13.81m | ego_speed=5.30m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=0.01
+2026-08-10 23:12:04,321 - INFO - [PERCEPTION] camera: vehicle=177 pedestrian=122 traffic_light=0 | BEV: vehicle=26 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:04,322 - INFO - [PCLA CONTROL] processed_target_speed=5.9993m/s brake_probability=0.000000 checkpoint=(3.4991, 0.0519) predicted_angle=0.009439
+2026-08-10 23:12:05,954 - INFO - [PCLA NAVIGATION] target_point=(32.1007, 2.0723) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:05,955 - INFO - [TICK 080] time=4.00s | distance_to_object=12.43m | ego_speed=6.11m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.00 brake=0.00 steer=0.05
+2026-08-10 23:12:05,955 - INFO - [PERCEPTION] camera: vehicle=56 pedestrian=379 traffic_light=0 | BEV: vehicle=31 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:05,955 - INFO - [PCLA CONTROL] processed_target_speed=6.0000m/s brake_probability=0.000000 checkpoint=(3.4846, 0.1829) predicted_angle=0.033381
+2026-08-10 23:12:07,697 - INFO - [PCLA NAVIGATION] target_point=(30.5438, 1.3565) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:07,697 - INFO - [TICK 085] time=4.25s | distance_to_object=10.88m | ego_speed=6.36m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.07 brake=0.00 steer=-0.03
+2026-08-10 23:12:07,698 - INFO - [PERCEPTION] camera: vehicle=7 pedestrian=496 traffic_light=0 | BEV: vehicle=50 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:07,698 - INFO - [PCLA CONTROL] processed_target_speed=6.0000m/s brake_probability=0.000000 checkpoint=(3.4828, -0.0735) predicted_angle=-0.013437
+2026-08-10 23:12:09,362 - INFO - [PCLA NAVIGATION] target_point=(29.0002, 1.6255) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:09,363 - INFO - [TICK 090] time=4.50s | distance_to_object=9.41m | ego_speed=5.89m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=-0.10
+2026-08-10 23:12:09,363 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=612 traffic_light=0 | BEV: vehicle=59 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:09,363 - INFO - [PCLA CONTROL] processed_target_speed=5.9999m/s brake_probability=0.000000 checkpoint=(3.4784, -0.3519) predicted_angle=-0.064180
+2026-08-10 23:12:10,927 - INFO - [PCLA NAVIGATION] target_point=(27.4664, 2.9431) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:10,927 - INFO - [TICK 095] time=4.75s | distance_to_object=8.08m | ego_speed=5.76m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=0.10
+2026-08-10 23:12:10,927 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=878 traffic_light=0 | BEV: vehicle=54 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:10,928 - INFO - [PCLA CONTROL] processed_target_speed=6.0000m/s brake_probability=0.000001 checkpoint=(3.4817, 0.2943) predicted_angle=0.053691
+2026-08-10 23:12:12,496 - INFO - [PCLA NAVIGATION] target_point=(26.0135, 2.1355) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:12,497 - INFO - [TICK 100] time=5.00s | distance_to_object=6.69m | ego_speed=6.53m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.00 brake=0.00 steer=-0.01
+2026-08-10 23:12:12,497 - INFO - [PERCEPTION] camera: vehicle=194 pedestrian=1586 traffic_light=0 | BEV: vehicle=15 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:12,497 - INFO - [PCLA CONTROL] processed_target_speed=6.0000m/s brake_probability=0.000000 checkpoint=(3.4914, 0.0340) predicted_angle=0.006201
+2026-08-10 23:12:14,139 - INFO - [PCLA NAVIGATION] target_point=(24.3307, 1.9625) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:14,139 - INFO - [TICK 105] time=5.25s | distance_to_object=5.21m | ego_speed=6.76m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.00 brake=1.00 steer=-0.05
+2026-08-10 23:12:14,140 - INFO - [PERCEPTION] camera: vehicle=249 pedestrian=3778 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:14,140 - INFO - [PCLA CONTROL] processed_target_speed=6.0000m/s brake_probability=0.000000 checkpoint=(3.4848, -0.1665) predicted_angle=-0.030390
+2026-08-10 23:12:15,807 - INFO - [PCLA NAVIGATION] target_point=(22.7118, 2.5466) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:15,807 - INFO - [TICK 110] time=5.50s | distance_to_object=4.02m | ego_speed=4.87m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=0.09
+2026-08-10 23:12:15,807 - INFO - [PERCEPTION] camera: vehicle=93 pedestrian=3699 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:15,807 - INFO - [PCLA CONTROL] processed_target_speed=5.9983m/s brake_probability=0.000062 checkpoint=(3.4900, 0.2798) predicted_angle=0.050933
+2026-08-10 23:12:17,769 - INFO - [PCLA NAVIGATION] target_point=(22.0078, 2.3010) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:17,771 - INFO - [TICK 115] time=5.75s | distance_to_object=3.54m | ego_speed=3.00m/s | target_speed=3.29m/s confidence=0.68 | action=GO | throttle=0.75 brake=0.00 steer=0.35
+2026-08-10 23:12:17,771 - INFO - [PERCEPTION] camera: vehicle=1254 pedestrian=1744 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:17,771 - INFO - [PCLA CONTROL] processed_target_speed=3.2925m/s brake_probability=0.000059 checkpoint=(3.3463, 1.2427) predicted_angle=0.226375
+2026-08-10 23:12:17,771 - INFO - 
+=============================================================
+DECISION CHANGE
+Tick: 115
+GO_FAST -> GO
+
+Distance to Object: 3.54 m
+Ego Speed: 3.00 m/s
+Target Speed: 3.29 m/s
+Confidence: 0.68
+=============================================================
+2026-08-10 23:12:19,415 - INFO - [PCLA NAVIGATION] target_point=(21.2294, 0.1847) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:19,416 - INFO - [TICK 120] time=6.00s | distance_to_object=2.96m | ego_speed=4.19m/s | target_speed=5.96m/s confidence=0.99 | action=GO_FAST | throttle=0.75 brake=0.00 steer=0.23
+2026-08-10 23:12:19,416 - INFO - [PERCEPTION] camera: vehicle=2284 pedestrian=6 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:19,416 - INFO - [PCLA CONTROL] processed_target_speed=5.9647m/s brake_probability=0.004198 checkpoint=(3.4252, 0.9382) predicted_angle=0.170202
+2026-08-10 23:12:19,416 - INFO - 
+=============================================================
+DECISION CHANGE
+Tick: 120
+GO -> GO_FAST
+
+Distance to Object: 2.96 m
+Ego Speed: 4.19 m/s
+Target Speed: 5.96 m/s
+Confidence: 0.99
+=============================================================
+2026-08-10 23:12:21,003 - INFO - [PCLA NAVIGATION] target_point=(19.9440, -2.0596) road_command=LANEFOLLOW active_route_waypoint_index=1 active_route_world=(25.4125, -57.4074)
+2026-08-10 23:12:21,004 - INFO - [TICK 125] time=6.25s | distance_to_object=2.36m | ego_speed=5.33m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.75 brake=0.00 steer=0.31
+2026-08-10 23:12:21,004 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=0 traffic_light=0 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-10 23:12:21,004 - INFO - [PCLA CONTROL] processed_target_speed=6.0000m/s brake_probability=0.000001 checkpoint=(3.3538, 1.0851) predicted_angle=0.199201
+2026-08-10 23:12:23,184 - INFO - 
+=============================================================
+                       RUN COMPLETE
+=============================================================
+Experiment:           Object in Road
+Scenario:             Chair
+Run:                  1
+
+Duration:             6.50 s
+Inference Checks:     26
+Decision Changes:     3
+
+Initial Distance:     30.00 m
+Minimum Distance:     2.36 m
+
+First Slowdown:       N/A
+First Stop:           N/A
+
+Final Action:         GO_FAST
+Collision:            No
+
+Saved
+  README.md
+  inference_log.csv
+  all_inferences.csv
+  all_runs.csv
+  scenario_log.txt
+  gps_log.json
+  collision_log.json
+  RGB images
+  LiDAR point clouds
+=============================================================

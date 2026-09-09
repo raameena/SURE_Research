@@ -1,0 +1,12 @@
+experiment,scenario,run_id,initial_distance_m,minimum_distance_m,first_slowdown_tick,first_slowdown_distance_m,first_stop_tick,first_stop_distance_m,minimum_ego_speed_mps,final_action,decision_change_count,collision_occurred
+Object in Road,Chair,run_1,30.0,2.356836199760437,,,,,0.2014345079660582,go_fast,3,False
+Object in Road,Chair,run_2,30.0,2.8478068113327026,,,,,0.11209821701050988,go_fast,1,False
+Object in Road,Pedestrian,run_1,30.0,5.649739667773247,95,8.514591619372368,,,0.11209821701050988,go,5,False
+Object in Road,Pedestrian,run_2,30.0,1.8834878653287888,,,,,0.11209821701050988,go_fast,5,True
+Object in Road,Pedestrian,run_3,30.0,3.1370596140623093,,,,,0.11209821701050988,go_fast,1,False
+Object in Road,Pedestrian,run_4,30.0,2.3444864004850388,90,9.707475110888481,,,0.0007627146937936735,go_fast,7,True
+Object in Road,Pedestrian,run_5,30.0,2.3032514303922653,90,9.69152395427227,125,5.193655893206596,0.0007889978772996886,go_fast,8,True
+Object in Road,Vehicle,run_1,30.0,3.8685972690582275,,,110,5.460758924484253,0.0002785116710588574,stop,2,False
+Object in Road,Chair,run_3,30.0,4.6794456243515015,,,101,6.45763623714447,0.0,stop,2,False
+Object in Road,Pedestrian in Red,run_1,30.0,2.844914123415947,95,9.490051671862602,130,4.394313260912895,0.0,stop,6,False
+Object in Road,Chair,run_4,30.0,2.447417140007019,145,2.447417140007019,,,0.022486127910400316,slow,3,True

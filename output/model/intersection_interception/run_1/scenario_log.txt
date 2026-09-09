@@ -1,0 +1,242 @@
+2026-08-19 18:43:20,210 - INFO - Searching for traffic light...
+2026-08-19 18:43:20,506 - INFO - Found traffic light at path index 0: ID 20
+2026-08-19 18:43:20,702 - INFO - Light set to Green (fixed).
+2026-08-19 18:43:20,703 - INFO - Ego signal fixed GREEN; 2 other signal(s) in its intersection group fixed RED.
+2026-08-19 18:43:20,704 - INFO - Trying crash car spawn at road_id=19, lane_id=4, backing_distance=20.0, z_offset=0.3
+2026-08-19 18:43:20,810 - INFO - Crash car spawned: ID 25 at road_id=19, lane_id=4, backing_distance=20.0
+2026-08-19 18:43:20,811 - INFO - Crash car connector: entry road_id=787 lane_id=1 -> exit road_id=787 lane_id=1, heading same direction as ego at the ego's own junction exit point.
+2026-08-19 18:43:20,811 - INFO - Crash car left-turn path generated with 46 waypoints, ending at road_id=5, lane_id=1.
+2026-08-19 18:43:30,306 - INFO - 
+=============================================================
+                    CARLA EXPERIMENT
+=============================================================
+Experiment:  Intersection Interception
+Scenario:    Early Interception
+Run:         1
+
+Map:         Town10HD_Opt
+Model:       tfv4_l6_0
+Ego Spawn:   11
+
+Traffic Light: GREEN (fixed)
+
+Interception Vehicle
+  Type:       vehicle.dodge.charger_2020
+  Speed:      14.00 m/s
+  Severity:   EARLY
+  Trigger:    ego travel >= 0.000 m (timeout 8.0 s)
+
+Sensors
+  Recording: RGB, LiDAR, GPS, Collision
+  Model:     Camera, LiDAR
+
+Simulation
+  Frequency:       20 Hz
+  Model Inference: Every 5 ticks
+=============================================================
+RUN STARTED
+=============================================================
+2026-08-19 18:43:30,544 - INFO - Crash car maneuver started at 14.0 m/s.
+2026-08-19 18:43:30,545 - INFO - [tick 0] Cut-in vehicle released after ego traveled 0.00m (configured trigger 0.00m).
+2026-08-19 18:43:32,446 - INFO - [TICK 000] time=0.00s | distance_to_interception_vehicle=23.45m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:43:32,446 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=0 traffic_light=1110 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:32,446 - INFO - 
+=============================================================
+DECISION CHANGE
+Tick: 0
+GO -> GO_FAST
+
+Distance to Interception Vehicle: 23.45 m
+Ego Speed: 0.00 m/s
+Interception Vehicle Speed: 0.00 m/s
+Target Speed: 6.00 m/s
+Confidence: 1.00
+=============================================================
+2026-08-19 18:43:34,262 - INFO - [TICK 005] time=0.25s | distance_to_interception_vehicle=23.48m | ego_speed=0.00m/s | interception_vehicle_speed=11.04m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:43:34,263 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=0 traffic_light=1122 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:35,750 - INFO - [TICK 010] time=0.50s | distance_to_interception_vehicle=23.50m | ego_speed=0.00m/s | interception_vehicle_speed=11.02m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:43:35,750 - INFO - [PERCEPTION] camera: vehicle=0 pedestrian=0 traffic_light=1120 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:37,166 - INFO - [TICK 015] time=0.75s | distance_to_interception_vehicle=23.08m | ego_speed=2.80m/s | interception_vehicle_speed=8.91m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:43:37,166 - INFO - [PERCEPTION] camera: vehicle=113 pedestrian=0 traffic_light=1177 | BEV: vehicle=0 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:38,749 - INFO - [TICK 020] time=1.00s | distance_to_interception_vehicle=22.20m | ego_speed=4.27m/s | interception_vehicle_speed=9.07m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:43:38,750 - INFO - [PERCEPTION] camera: vehicle=1214 pedestrian=0 traffic_light=1371 | BEV: vehicle=104 walker=0 stop_sign=0 red_light=0 green_light=130
+2026-08-19 18:43:40,228 - INFO - [TICK 025] time=1.25s | distance_to_interception_vehicle=21.00m | ego_speed=5.33m/s | interception_vehicle_speed=11.45m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:43:40,229 - INFO - [PERCEPTION] camera: vehicle=1473 pedestrian=0 traffic_light=2054 | BEV: vehicle=105 walker=0 stop_sign=0 red_light=0 green_light=226
+2026-08-19 18:43:41,730 - INFO - [TICK 030] time=1.50s | distance_to_interception_vehicle=19.62m | ego_speed=6.02m/s | interception_vehicle_speed=12.74m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:43:41,731 - INFO - [PERCEPTION] camera: vehicle=2274 pedestrian=0 traffic_light=2765 | BEV: vehicle=123 walker=0 stop_sign=0 red_light=0 green_light=233
+2026-08-19 18:43:43,224 - INFO - [TICK 035] time=1.75s | distance_to_interception_vehicle=17.99m | ego_speed=7.21m/s | interception_vehicle_speed=14.25m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:43:43,224 - INFO - [PERCEPTION] camera: vehicle=3273 pedestrian=0 traffic_light=4337 | BEV: vehicle=151 walker=0 stop_sign=0 red_light=0 green_light=155
+2026-08-19 18:43:44,786 - INFO - [TICK 040] time=2.00s | distance_to_interception_vehicle=16.05m | ego_speed=8.41m/s | interception_vehicle_speed=14.64m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:43:44,786 - INFO - [PERCEPTION] camera: vehicle=4032 pedestrian=0 traffic_light=1506 | BEV: vehicle=142 walker=0 stop_sign=0 red_light=0 green_light=45
+2026-08-19 18:43:46,334 - INFO - [TICK 045] time=2.25s | distance_to_interception_vehicle=13.79m | ego_speed=9.61m/s | interception_vehicle_speed=14.02m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:43:46,335 - INFO - [PERCEPTION] camera: vehicle=4879 pedestrian=0 traffic_light=1346 | BEV: vehicle=152 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:46,335 - INFO - 
+=============================================================
+DECISION CHANGE
+Tick: 45
+GO_FAST -> GO
+
+Distance to Interception Vehicle: 13.79 m
+Ego Speed: 9.61 m/s
+Interception Vehicle Speed: 14.02 m/s
+Target Speed: 3.00 m/s
+Confidence: 1.00
+=============================================================
+2026-08-19 18:43:47,888 - INFO - [TICK 050] time=2.50s | distance_to_interception_vehicle=11.63m | ego_speed=10.25m/s | interception_vehicle_speed=13.56m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:43:47,889 - INFO - [PERCEPTION] camera: vehicle=5376 pedestrian=0 traffic_light=1950 | BEV: vehicle=195 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:49,425 - INFO - [TICK 055] time=2.75s | distance_to_interception_vehicle=10.07m | ego_speed=10.53m/s | interception_vehicle_speed=14.14m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:43:49,425 - INFO - [PERCEPTION] camera: vehicle=5682 pedestrian=0 traffic_light=3406 | BEV: vehicle=180 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:50,961 - INFO - [TICK 060] time=3.00s | distance_to_interception_vehicle=9.13m | ego_speed=10.71m/s | interception_vehicle_speed=14.16m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:43:50,961 - INFO - [PERCEPTION] camera: vehicle=5129 pedestrian=0 traffic_light=2402 | BEV: vehicle=172 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:52,550 - INFO - [TICK 065] time=3.25s | distance_to_interception_vehicle=8.69m | ego_speed=10.89m/s | interception_vehicle_speed=13.57m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:43:52,550 - INFO - [PERCEPTION] camera: vehicle=4608 pedestrian=0 traffic_light=82 | BEV: vehicle=214 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:54,187 - INFO - [TICK 070] time=3.50s | distance_to_interception_vehicle=8.71m | ego_speed=11.04m/s | interception_vehicle_speed=14.03m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:43:54,188 - INFO - [PERCEPTION] camera: vehicle=3791 pedestrian=0 traffic_light=142 | BEV: vehicle=231 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:55,810 - INFO - [TICK 075] time=3.75s | distance_to_interception_vehicle=9.16m | ego_speed=11.21m/s | interception_vehicle_speed=14.17m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:43:55,810 - INFO - [PERCEPTION] camera: vehicle=2770 pedestrian=0 traffic_light=0 | BEV: vehicle=213 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:57,372 - INFO - [TICK 080] time=4.00s | distance_to_interception_vehicle=9.69m | ego_speed=11.35m/s | interception_vehicle_speed=13.69m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:43:57,373 - INFO - [PERCEPTION] camera: vehicle=2063 pedestrian=0 traffic_light=1126 | BEV: vehicle=169 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:43:58,803 - INFO - [TICK 085] time=4.25s | distance_to_interception_vehicle=10.31m | ego_speed=11.50m/s | interception_vehicle_speed=14.27m/s | target_speed=3.00m/s confidence=0.99 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:43:58,804 - INFO - [PERCEPTION] camera: vehicle=1652 pedestrian=0 traffic_light=120 | BEV: vehicle=161 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:00,092 - INFO - [TICK 090] time=4.50s | distance_to_interception_vehicle=10.97m | ego_speed=11.62m/s | interception_vehicle_speed=14.01m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:44:00,092 - INFO - [PERCEPTION] camera: vehicle=1598 pedestrian=0 traffic_light=0 | BEV: vehicle=156 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:01,535 - INFO - [TICK 095] time=4.75s | distance_to_interception_vehicle=11.49m | ego_speed=11.76m/s | interception_vehicle_speed=13.77m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:44:01,535 - INFO - [PERCEPTION] camera: vehicle=1436 pedestrian=0 traffic_light=125 | BEV: vehicle=156 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:03,090 - INFO - [TICK 100] time=5.00s | distance_to_interception_vehicle=12.07m | ego_speed=11.87m/s | interception_vehicle_speed=14.34m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:44:03,090 - INFO - [PERCEPTION] camera: vehicle=1269 pedestrian=0 traffic_light=0 | BEV: vehicle=214 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:04,491 - INFO - [TICK 105] time=5.25s | distance_to_interception_vehicle=12.62m | ego_speed=11.99m/s | interception_vehicle_speed=13.94m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:44:04,491 - INFO - [PERCEPTION] camera: vehicle=1305 pedestrian=0 traffic_light=0 | BEV: vehicle=189 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:06,018 - INFO - [TICK 110] time=5.50s | distance_to_interception_vehicle=13.07m | ego_speed=12.09m/s | interception_vehicle_speed=13.92m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:44:06,019 - INFO - [PERCEPTION] camera: vehicle=1200 pedestrian=0 traffic_light=0 | BEV: vehicle=144 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:07,692 - INFO - [TICK 115] time=5.75s | distance_to_interception_vehicle=13.59m | ego_speed=12.19m/s | interception_vehicle_speed=14.34m/s | target_speed=3.00m/s confidence=1.00 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:44:07,692 - INFO - [PERCEPTION] camera: vehicle=1034 pedestrian=0 traffic_light=0 | BEV: vehicle=163 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:09,217 - INFO - [TICK 120] time=6.00s | distance_to_interception_vehicle=14.06m | ego_speed=12.28m/s | interception_vehicle_speed=13.87m/s | target_speed=3.00m/s confidence=0.99 | action=GO | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:44:09,218 - INFO - [PERCEPTION] camera: vehicle=949 pedestrian=0 traffic_light=0 | BEV: vehicle=115 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:10,651 - INFO - [TICK 125] time=6.25s | distance_to_interception_vehicle=14.44m | ego_speed=12.38m/s | interception_vehicle_speed=14.10m/s | target_speed=6.00m/s confidence=0.99 | action=GO_FAST | throttle=0.50 brake=0.00 steer=0.00
+2026-08-19 18:44:10,652 - INFO - [PERCEPTION] camera: vehicle=3154 pedestrian=0 traffic_light=0 | BEV: vehicle=181 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:10,652 - INFO - 
+=============================================================
+DECISION CHANGE
+Tick: 125
+GO -> GO_FAST
+
+Distance to Interception Vehicle: 14.44 m
+Ego Speed: 12.38 m/s
+Interception Vehicle Speed: 14.10 m/s
+Target Speed: 6.00 m/s
+Confidence: 0.99
+=============================================================
+2026-08-19 18:44:12,179 - INFO - [TICK 130] time=6.50s | distance_to_interception_vehicle=14.88m | ego_speed=12.92m/s | interception_vehicle_speed=14.30m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:44:12,180 - INFO - [PERCEPTION] camera: vehicle=766 pedestrian=0 traffic_light=0 | BEV: vehicle=173 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:12,481 - INFO - Crash car stopped.
+2026-08-19 18:44:12,481 - INFO - [tick 135] Crash car completed cut-in merge -- now stationary in ego's lane.
+2026-08-19 18:44:13,668 - INFO - [TICK 135] time=6.75s | distance_to_interception_vehicle=15.04m | ego_speed=13.83m/s | interception_vehicle_speed=13.78m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:44:13,668 - INFO - [PERCEPTION] camera: vehicle=785 pedestrian=0 traffic_light=0 | BEV: vehicle=172 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:15,076 - INFO - [TICK 140] time=7.00s | distance_to_interception_vehicle=14.65m | ego_speed=14.76m/s | interception_vehicle_speed=11.38m/s | target_speed=6.00m/s confidence=0.99 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:44:15,077 - INFO - [PERCEPTION] camera: vehicle=826 pedestrian=0 traffic_light=0 | BEV: vehicle=198 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:16,475 - INFO - [TICK 145] time=7.25s | distance_to_interception_vehicle=13.25m | ego_speed=15.66m/s | interception_vehicle_speed=8.07m/s | target_speed=6.00m/s confidence=0.99 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:44:16,476 - INFO - [PERCEPTION] camera: vehicle=1002 pedestrian=0 traffic_light=0 | BEV: vehicle=192 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:17,989 - INFO - [TICK 150] time=7.50s | distance_to_interception_vehicle=10.72m | ego_speed=16.54m/s | interception_vehicle_speed=3.42m/s | target_speed=6.00m/s confidence=1.00 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:44:17,989 - INFO - [PERCEPTION] camera: vehicle=1445 pedestrian=0 traffic_light=0 | BEV: vehicle=166 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:19,621 - INFO - [TICK 155] time=7.75s | distance_to_interception_vehicle=6.70m | ego_speed=17.38m/s | interception_vehicle_speed=0.01m/s | target_speed=6.00m/s confidence=0.99 | action=GO_FAST | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:44:19,621 - INFO - [PERCEPTION] camera: vehicle=3060 pedestrian=0 traffic_light=0 | BEV: vehicle=179 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:21,177 - INFO - [TICK 160] time=8.00s | distance_to_interception_vehicle=2.25m | ego_speed=18.21m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=HARD_BRAKE | throttle=0.80 brake=0.00 steer=0.00
+2026-08-19 18:44:21,177 - INFO - [PERCEPTION] camera: vehicle=13653 pedestrian=0 traffic_light=0 | BEV: vehicle=193 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:21,177 - INFO - 
+=============================================================
+DECISION CHANGE
+Tick: 160
+GO_FAST -> HARD_BRAKE
+
+Distance to Interception Vehicle: 2.25 m
+Ego Speed: 18.21 m/s
+Interception Vehicle Speed: 0.00 m/s
+Target Speed: 0.00 m/s
+Confidence: 1.00
+=============================================================
+2026-08-19 18:44:21,178 - WARNING - Insufficient stopping distance at tick 160: distance_to_interception_vehicle=2.25m, ego_speed=18.21m/s.
+2026-08-19 18:44:21,228 - WARNING - Collision detected at frame 1056 with vehicle.dodge.charger_2020 (impulse magnitude=38518.9).
+2026-08-19 18:44:22,777 - INFO - [TICK 165] time=8.25s | distance_to_interception_vehicle=0.11m | ego_speed=1.05m/s | interception_vehicle_speed=0.33m/s | target_speed=0.00m/s confidence=1.00 | action=HARD_BRAKE | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:22,777 - INFO - [PERCEPTION] camera: vehicle=34286 pedestrian=0 traffic_light=0 | BEV: vehicle=243 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:22,777 - WARNING - 
+!!!!!!!!!!!!!!!!!!!!!!! COLLISION !!!!!!!!!!!!!!!!!!!!!!!!!!!
+Tick: 165
+Ego Speed: 1.05 m/s
+Interception Vehicle: vehicle.dodge.charger_2020
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+2026-08-19 18:44:24,283 - INFO - [TICK 170] time=8.50s | distance_to_interception_vehicle=0.15m | ego_speed=0.03m/s | interception_vehicle_speed=0.12m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:24,283 - INFO - [PERCEPTION] camera: vehicle=33557 pedestrian=0 traffic_light=0 | BEV: vehicle=264 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:24,283 - INFO - 
+=============================================================
+DECISION CHANGE
+Tick: 170
+HARD_BRAKE -> STOP
+
+Distance to Interception Vehicle: 0.15 m
+Ego Speed: 0.03 m/s
+Interception Vehicle Speed: 0.12 m/s
+Target Speed: 0.00 m/s
+Confidence: 1.00
+=============================================================
+2026-08-19 18:44:25,778 - INFO - [TICK 175] time=8.75s | distance_to_interception_vehicle=0.15m | ego_speed=0.01m/s | interception_vehicle_speed=0.01m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:25,778 - INFO - [PERCEPTION] camera: vehicle=35110 pedestrian=0 traffic_light=0 | BEV: vehicle=292 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:27,198 - INFO - [TICK 180] time=9.00s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:27,198 - INFO - [PERCEPTION] camera: vehicle=35560 pedestrian=0 traffic_light=0 | BEV: vehicle=295 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:28,530 - INFO - [TICK 185] time=9.25s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:28,530 - INFO - [PERCEPTION] camera: vehicle=35708 pedestrian=0 traffic_light=0 | BEV: vehicle=292 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:29,812 - INFO - [TICK 190] time=9.50s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:29,812 - INFO - [PERCEPTION] camera: vehicle=35693 pedestrian=0 traffic_light=0 | BEV: vehicle=294 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:31,260 - INFO - [TICK 195] time=9.75s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:31,261 - INFO - [PERCEPTION] camera: vehicle=35716 pedestrian=0 traffic_light=0 | BEV: vehicle=296 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:32,783 - INFO - [TICK 200] time=10.00s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:32,783 - INFO - [PERCEPTION] camera: vehicle=35729 pedestrian=0 traffic_light=0 | BEV: vehicle=288 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:34,340 - INFO - [TICK 205] time=10.25s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:34,340 - INFO - [PERCEPTION] camera: vehicle=35733 pedestrian=0 traffic_light=0 | BEV: vehicle=293 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:35,761 - INFO - [TICK 210] time=10.50s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:35,761 - INFO - [PERCEPTION] camera: vehicle=35683 pedestrian=0 traffic_light=0 | BEV: vehicle=267 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:37,224 - INFO - [TICK 215] time=10.75s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:37,224 - INFO - [PERCEPTION] camera: vehicle=35712 pedestrian=0 traffic_light=0 | BEV: vehicle=285 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:38,635 - INFO - [TICK 220] time=11.00s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:38,635 - INFO - [PERCEPTION] camera: vehicle=35735 pedestrian=0 traffic_light=0 | BEV: vehicle=295 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:39,965 - INFO - [TICK 225] time=11.25s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:39,965 - INFO - [PERCEPTION] camera: vehicle=35769 pedestrian=0 traffic_light=0 | BEV: vehicle=281 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:41,444 - INFO - [TICK 230] time=11.50s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:41,445 - INFO - [PERCEPTION] camera: vehicle=35741 pedestrian=0 traffic_light=0 | BEV: vehicle=273 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:42,914 - INFO - [TICK 235] time=11.75s | distance_to_interception_vehicle=0.15m | ego_speed=0.00m/s | interception_vehicle_speed=0.00m/s | target_speed=0.00m/s confidence=1.00 | action=STOP | throttle=0.00 brake=1.00 steer=0.00
+2026-08-19 18:44:42,915 - INFO - [PERCEPTION] camera: vehicle=35770 pedestrian=0 traffic_light=0 | BEV: vehicle=290 walker=0 stop_sign=0 red_light=0 green_light=0
+2026-08-19 18:44:43,229 - INFO - Crash car stopped.
+2026-08-19 18:44:43,230 - INFO - Traffic light group state and freeze behavior restored.
+2026-08-19 18:44:44,445 - INFO - 
+=============================================================
+                       RUN COMPLETE
+=============================================================
+Experiment:           Intersection Interception
+Scenario:             Early Interception
+Run:                  1
+
+Duration:             12.00 s
+Inference Checks:     48
+Decision Changes:     5
+
+Minimum Distance:     0.11 m
+Minimum TTC:          0.39 s
+
+First Vehicle Detect: Tick 20 @ 22.20 m
+First Slowdown:       N/A
+First Stop:           Tick 170 @ 0.15 m
+First Hard Brake:     Tick 160 @ 2.25 m
+
+Final Action:         STOP
+Collision:            Yes
+
+Saved
+  README.md
+  inference_log.csv
+  all_inferences.csv
+  all_runs.csv
+  scenario_log.txt
+  gps_log.json
+  collision_log.json
+  RGB images
+  LiDAR point clouds
+=============================================================

@@ -1,0 +1,122 @@
+[
+    {
+        "frame": 208620,
+        "timestamp": 10721.11056945473,
+        "impact_actor_id": 243,
+        "impact_actor_type": "static.prop.plasticchair",
+        "impulse": {
+            "x": -8775.017578125,
+            "y": -46.58943176269531,
+            "z": 0.0,
+            "magnitude": 8775.1412565015
+        }
+    },
+    {
+        "frame": 208623,
+        "timestamp": 10721.260569456965,
+        "impact_actor_id": 243,
+        "impact_actor_type": "static.prop.plasticchair",
+        "impulse": {
+            "x": -39.89653396606445,
+            "y": -0.2118237316608429,
+            "z": 0.0,
+            "magnitude": 39.89709628279518
+        }
+    },
+    {
+        "frame": 208624,
+        "timestamp": 10721.31056945771,
+        "impact_actor_id": 243,
+        "impact_actor_type": "static.prop.plasticchair",
+        "impulse": {
+            "x": -112.75086975097656,
+            "y": -0.5986311435699463,
+            "z": 0.0,
+            "magnitude": 112.75245890377617
+        }
+    },
+    {
+        "frame": 208625,
+        "timestamp": 10721.360569458455,
+        "impact_actor_id": 243,
+        "impact_actor_type": "static.prop.plasticchair",
+        "impulse": {
+            "x": -60.74605178833008,
+            "y": -0.3225206434726715,
+            "z": 0.0,
+            "magnitude": 60.74690796605162
+        }
+    },
+    {
+        "frame": 208626,
+        "timestamp": 10721.4105694592,
+        "impact_actor_id": 243,
+        "impact_actor_type": "static.prop.plasticchair",
+        "impulse": {
+            "x": -137.17135620117188,
+            "y": -0.7282875180244446,
+            "z": 0.0,
+            "magnitude": 137.17328954566077
+        }
+    },
+    {
+        "frame": 208627,
+        "timestamp": 10721.460569459945,
+        "impact_actor_id": 243,
+        "impact_actor_type": "static.prop.plasticchair",
+        "impulse": {
+            "x": -133.78741455078125,
+            "y": -0.7103211283683777,
+            "z": 0.0,
+            "magnitude": 133.78930020105494
+        }
+    },
+    {
+        "frame": 208628,
+        "timestamp": 10721.51056946069,
+        "impact_actor_id": 243,
+        "impact_actor_type": "static.prop.plasticchair",
+        "impulse": {
+            "x": -143.7528839111328,
+            "y": -0.7632309794425964,
+            "z": 0.0,
+            "magnitude": 143.7549100180429
+        }
+    },
+    {
+        "frame": 208629,
+        "timestamp": 10721.560569461435,
+        "impact_actor_id": 243,
+        "impact_actor_type": "static.prop.plasticchair",
+        "impulse": {
+            "x": -196.90855407714844,
+            "y": -1.0454517602920532,
+            "z": 0.0,
+            "magnitude": 196.9113293798414
+        }
+    },
+    {
+        "frame": 208630,
+        "timestamp": 10721.61056946218,
+        "impact_actor_id": 243,
+        "impact_actor_type": "static.prop.plasticchair",
+        "impulse": {
+            "x": -138.18690490722656,
+            "y": -0.7336794137954712,
+            "z": 0.0,
+            "magnitude": 138.1888525653249
+        }
+    },
+    {
+        "frame": 208631,
+        "timestamp": 10721.660569462925,
+        "impact_actor_id": 243,
+        "impact_actor_type": "static.prop.plasticchair",
+        "impulse": {
+            "x": -132.51390075683594,
+            "y": -0.7035594582557678,
+            "z": 0.0,
+            "magnitude": 132.5157684568288
+        }
+    }
+]
